@@ -750,6 +750,606 @@ export const ACTIVE_TOOLS = [
     name: 'List Encoder',
     category: 'Text Formatters',
     tags: ['list', 'encoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'fin-mortgage-calculator',
+    name: 'Mortgage Calculator',
+    category: 'Finance',
+    tags: ['mortgage', 'calculator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-estimator',
+    name: 'Mortgage Estimator',
+    category: 'Finance',
+    tags: ['mortgage', 'estimator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-projector',
+    name: 'Mortgage Projector',
+    category: 'Finance',
+    tags: ['mortgage', 'projector', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-forecaster',
+    name: 'Mortgage Forecaster',
+    category: 'Finance',
+    tags: ['mortgage', 'forecaster', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-planner',
+    name: 'Mortgage Planner',
+    category: 'Finance',
+    tags: ['mortgage', 'planner', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-tracker',
+    name: 'Mortgage Tracker',
+    category: 'Finance',
+    tags: ['mortgage', 'tracker', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-monitor',
+    name: 'Mortgage Monitor',
+    category: 'Finance',
+    tags: ['mortgage', 'monitor', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-analyzer',
+    name: 'Mortgage Analyzer',
+    category: 'Finance',
+    tags: ['mortgage', 'analyzer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-visualizer',
+    name: 'Mortgage Visualizer',
+    category: 'Finance',
+    tags: ['mortgage', 'visualizer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-chart',
+    name: 'Mortgage Chart',
+    category: 'Finance',
+    tags: ['mortgage', 'chart', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-graph',
+    name: 'Mortgage Graph',
+    category: 'Finance',
+    tags: ['mortgage', 'graph', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-simulator',
+    name: 'Mortgage Simulator',
+    category: 'Finance',
+    tags: ['mortgage', 'simulator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-modeler',
+    name: 'Mortgage Modeler',
+    category: 'Finance',
+    tags: ['mortgage', 'modeler', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-optimizer',
+    name: 'Mortgage Optimizer',
+    category: 'Finance',
+    tags: ['mortgage', 'optimizer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-converter',
+    name: 'Mortgage Converter',
+    category: 'Finance',
+    tags: ['mortgage', 'converter', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-updater',
+    name: 'Mortgage Updater',
+    category: 'Finance',
+    tags: ['mortgage', 'updater', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-fetcher',
+    name: 'Mortgage Fetcher',
+    category: 'Finance',
+    tags: ['mortgage', 'fetcher', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-screener',
+    name: 'Mortgage Screener',
+    category: 'Finance',
+    tags: ['mortgage', 'screener', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-scanner',
+    name: 'Mortgage Scanner',
+    category: 'Finance',
+    tags: ['mortgage', 'scanner', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-alert',
+    name: 'Mortgage Alert',
+    category: 'Finance',
+    tags: ['mortgage', 'alert', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-mortgage-notifier',
+    name: 'Mortgage Notifier',
+    category: 'Finance',
+    tags: ['mortgage', 'notifier', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-calculator',
+    name: 'Loan Calculator',
+    category: 'Finance',
+    tags: ['loan', 'calculator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-estimator',
+    name: 'Loan Estimator',
+    category: 'Finance',
+    tags: ['loan', 'estimator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-projector',
+    name: 'Loan Projector',
+    category: 'Finance',
+    tags: ['loan', 'projector', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-forecaster',
+    name: 'Loan Forecaster',
+    category: 'Finance',
+    tags: ['loan', 'forecaster', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-planner',
+    name: 'Loan Planner',
+    category: 'Finance',
+    tags: ['loan', 'planner', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-tracker',
+    name: 'Loan Tracker',
+    category: 'Finance',
+    tags: ['loan', 'tracker', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-monitor',
+    name: 'Loan Monitor',
+    category: 'Finance',
+    tags: ['loan', 'monitor', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-analyzer',
+    name: 'Loan Analyzer',
+    category: 'Finance',
+    tags: ['loan', 'analyzer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-visualizer',
+    name: 'Loan Visualizer',
+    category: 'Finance',
+    tags: ['loan', 'visualizer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-chart',
+    name: 'Loan Chart',
+    category: 'Finance',
+    tags: ['loan', 'chart', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-graph',
+    name: 'Loan Graph',
+    category: 'Finance',
+    tags: ['loan', 'graph', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-simulator',
+    name: 'Loan Simulator',
+    category: 'Finance',
+    tags: ['loan', 'simulator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-modeler',
+    name: 'Loan Modeler',
+    category: 'Finance',
+    tags: ['loan', 'modeler', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-optimizer',
+    name: 'Loan Optimizer',
+    category: 'Finance',
+    tags: ['loan', 'optimizer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-converter',
+    name: 'Loan Converter',
+    category: 'Finance',
+    tags: ['loan', 'converter', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-updater',
+    name: 'Loan Updater',
+    category: 'Finance',
+    tags: ['loan', 'updater', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-fetcher',
+    name: 'Loan Fetcher',
+    category: 'Finance',
+    tags: ['loan', 'fetcher', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-screener',
+    name: 'Loan Screener',
+    category: 'Finance',
+    tags: ['loan', 'screener', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-scanner',
+    name: 'Loan Scanner',
+    category: 'Finance',
+    tags: ['loan', 'scanner', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-alert',
+    name: 'Loan Alert',
+    category: 'Finance',
+    tags: ['loan', 'alert', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-loan-notifier',
+    name: 'Loan Notifier',
+    category: 'Finance',
+    tags: ['loan', 'notifier', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-calculator',
+    name: 'Interest Calculator',
+    category: 'Finance',
+    tags: ['interest', 'calculator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-estimator',
+    name: 'Interest Estimator',
+    category: 'Finance',
+    tags: ['interest', 'estimator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-projector',
+    name: 'Interest Projector',
+    category: 'Finance',
+    tags: ['interest', 'projector', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-forecaster',
+    name: 'Interest Forecaster',
+    category: 'Finance',
+    tags: ['interest', 'forecaster', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-planner',
+    name: 'Interest Planner',
+    category: 'Finance',
+    tags: ['interest', 'planner', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-tracker',
+    name: 'Interest Tracker',
+    category: 'Finance',
+    tags: ['interest', 'tracker', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-monitor',
+    name: 'Interest Monitor',
+    category: 'Finance',
+    tags: ['interest', 'monitor', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-analyzer',
+    name: 'Interest Analyzer',
+    category: 'Finance',
+    tags: ['interest', 'analyzer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-visualizer',
+    name: 'Interest Visualizer',
+    category: 'Finance',
+    tags: ['interest', 'visualizer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-chart',
+    name: 'Interest Chart',
+    category: 'Finance',
+    tags: ['interest', 'chart', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-graph',
+    name: 'Interest Graph',
+    category: 'Finance',
+    tags: ['interest', 'graph', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-simulator',
+    name: 'Interest Simulator',
+    category: 'Finance',
+    tags: ['interest', 'simulator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-modeler',
+    name: 'Interest Modeler',
+    category: 'Finance',
+    tags: ['interest', 'modeler', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-optimizer',
+    name: 'Interest Optimizer',
+    category: 'Finance',
+    tags: ['interest', 'optimizer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-converter',
+    name: 'Interest Converter',
+    category: 'Finance',
+    tags: ['interest', 'converter', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-updater',
+    name: 'Interest Updater',
+    category: 'Finance',
+    tags: ['interest', 'updater', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-fetcher',
+    name: 'Interest Fetcher',
+    category: 'Finance',
+    tags: ['interest', 'fetcher', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-screener',
+    name: 'Interest Screener',
+    category: 'Finance',
+    tags: ['interest', 'screener', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-scanner',
+    name: 'Interest Scanner',
+    category: 'Finance',
+    tags: ['interest', 'scanner', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-alert',
+    name: 'Interest Alert',
+    category: 'Finance',
+    tags: ['interest', 'alert', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-interest-notifier',
+    name: 'Interest Notifier',
+    category: 'Finance',
+    tags: ['interest', 'notifier', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-calculator',
+    name: 'Compound Calculator',
+    category: 'Finance',
+    tags: ['compound', 'calculator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-estimator',
+    name: 'Compound Estimator',
+    category: 'Finance',
+    tags: ['compound', 'estimator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-projector',
+    name: 'Compound Projector',
+    category: 'Finance',
+    tags: ['compound', 'projector', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-forecaster',
+    name: 'Compound Forecaster',
+    category: 'Finance',
+    tags: ['compound', 'forecaster', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-planner',
+    name: 'Compound Planner',
+    category: 'Finance',
+    tags: ['compound', 'planner', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-tracker',
+    name: 'Compound Tracker',
+    category: 'Finance',
+    tags: ['compound', 'tracker', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-monitor',
+    name: 'Compound Monitor',
+    category: 'Finance',
+    tags: ['compound', 'monitor', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-analyzer',
+    name: 'Compound Analyzer',
+    category: 'Finance',
+    tags: ['compound', 'analyzer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-visualizer',
+    name: 'Compound Visualizer',
+    category: 'Finance',
+    tags: ['compound', 'visualizer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-chart',
+    name: 'Compound Chart',
+    category: 'Finance',
+    tags: ['compound', 'chart', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-graph',
+    name: 'Compound Graph',
+    category: 'Finance',
+    tags: ['compound', 'graph', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-simulator',
+    name: 'Compound Simulator',
+    category: 'Finance',
+    tags: ['compound', 'simulator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-modeler',
+    name: 'Compound Modeler',
+    category: 'Finance',
+    tags: ['compound', 'modeler', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-optimizer',
+    name: 'Compound Optimizer',
+    category: 'Finance',
+    tags: ['compound', 'optimizer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-converter',
+    name: 'Compound Converter',
+    category: 'Finance',
+    tags: ['compound', 'converter', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-updater',
+    name: 'Compound Updater',
+    category: 'Finance',
+    tags: ['compound', 'updater', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-fetcher',
+    name: 'Compound Fetcher',
+    category: 'Finance',
+    tags: ['compound', 'fetcher', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-screener',
+    name: 'Compound Screener',
+    category: 'Finance',
+    tags: ['compound', 'screener', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-scanner',
+    name: 'Compound Scanner',
+    category: 'Finance',
+    tags: ['compound', 'scanner', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-alert',
+    name: 'Compound Alert',
+    category: 'Finance',
+    tags: ['compound', 'alert', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-compound-notifier',
+    name: 'Compound Notifier',
+    category: 'Finance',
+    tags: ['compound', 'notifier', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-calculator',
+    name: 'Tax Calculator',
+    category: 'Finance',
+    tags: ['tax', 'calculator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-estimator',
+    name: 'Tax Estimator',
+    category: 'Finance',
+    tags: ['tax', 'estimator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-projector',
+    name: 'Tax Projector',
+    category: 'Finance',
+    tags: ['tax', 'projector', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-forecaster',
+    name: 'Tax Forecaster',
+    category: 'Finance',
+    tags: ['tax', 'forecaster', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-planner',
+    name: 'Tax Planner',
+    category: 'Finance',
+    tags: ['tax', 'planner', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-tracker',
+    name: 'Tax Tracker',
+    category: 'Finance',
+    tags: ['tax', 'tracker', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-monitor',
+    name: 'Tax Monitor',
+    category: 'Finance',
+    tags: ['tax', 'monitor', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-analyzer',
+    name: 'Tax Analyzer',
+    category: 'Finance',
+    tags: ['tax', 'analyzer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-visualizer',
+    name: 'Tax Visualizer',
+    category: 'Finance',
+    tags: ['tax', 'visualizer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-chart',
+    name: 'Tax Chart',
+    category: 'Finance',
+    tags: ['tax', 'chart', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-graph',
+    name: 'Tax Graph',
+    category: 'Finance',
+    tags: ['tax', 'graph', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-simulator',
+    name: 'Tax Simulator',
+    category: 'Finance',
+    tags: ['tax', 'simulator', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-modeler',
+    name: 'Tax Modeler',
+    category: 'Finance',
+    tags: ['tax', 'modeler', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-optimizer',
+    name: 'Tax Optimizer',
+    category: 'Finance',
+    tags: ['tax', 'optimizer', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-converter',
+    name: 'Tax Converter',
+    category: 'Finance',
+    tags: ['tax', 'converter', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'fin-tax-updater',
+    name: 'Tax Updater',
+    category: 'Finance',
+    tags: ['tax', 'updater', 'finance', 'money', 'calculator']
   }
 ];
 

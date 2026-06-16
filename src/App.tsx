@@ -23,6 +23,7 @@ import RoiCalculatorTool from './components/RoiCalculatorTool';
 import BmiCalculatorTool from './components/BmiCalculatorTool';
 import CsvToJsonTool from './components/CsvToJsonTool';
 import AnyTextTool from './components/AnyTextTool';
+import AnyFinTool from './components/AnyFinTool';
 import { ACTIVE_TOOLS } from './components/LandingPage';
 
 export default function App() {
@@ -134,8 +135,20 @@ export default function App() {
          return null;
       })()}
 
+      {/* Generic Finance tools render */}
+      {currentView.startsWith('fin-') && !['fin-roi-calculator'].includes(currentView) && (() => {
+         const match = currentView.match(/^fin-(.+)-(.+)$/);
+         if (match) {
+            const selectedTool = ACTIVE_TOOLS.find(t => t.id === currentView);
+            if (selectedTool) {
+               return <AnyFinTool onBack={() => setCurrentView('landing')} title={selectedTool.name} action={match[2]} topic={match[1]} />
+            }
+         }
+         return null;
+      })()}
+
       {/* Fallback for tools we haven't implemented yet */}
-      {!currentView.startsWith('text-') && currentView !== 'landing' && 
+      {!currentView.startsWith('text-') && !currentView.startsWith('fin-') && currentView !== 'landing' && 
        currentView !== 'image-cropper' && 
        currentView !== 'image-compressor' && 
        currentView !== 'image-resizer' && 
