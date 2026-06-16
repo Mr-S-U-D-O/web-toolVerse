@@ -25,6 +25,7 @@ import CsvToJsonTool from './components/CsvToJsonTool';
 import AnyTextTool from './components/AnyTextTool';
 import AnyFinTool from './components/AnyFinTool';
 import AnyMathTool from './components/AnyMathTool';
+import AnyCodeTool from './components/AnyCodeTool';
 import RelatedTools from './components/RelatedTools';
 import { ACTIVE_TOOLS } from './components/LandingPage';
 
@@ -161,8 +162,20 @@ export default function App() {
          return null;
       })()}
 
+      {/* Generic Code tools render */}
+      {currentView.startsWith('code-') && (() => {
+         const match = currentView.match(/^code-(.+)-(.+)$/);
+         if (match) {
+            const selectedTool = ACTIVE_TOOLS.find(t => t.id === currentView);
+            if (selectedTool) {
+               return <AnyCodeTool onBack={() => setCurrentView('landing')} title={selectedTool.name} action={match[2]} lang={match[1]} />
+            }
+         }
+         return null;
+      })()}
+
       {/* Fallback for tools we haven't implemented yet */}
-      {!currentView.startsWith('text-') && !currentView.startsWith('fin-') && !currentView.startsWith('math-') && currentView !== 'landing' && 
+      {!currentView.startsWith('text-') && !currentView.startsWith('fin-') && !currentView.startsWith('math-') && !currentView.startsWith('code-') && currentView !== 'landing' && 
        currentView !== 'image-cropper' && 
        currentView !== 'image-compressor' && 
        currentView !== 'image-resizer' && 

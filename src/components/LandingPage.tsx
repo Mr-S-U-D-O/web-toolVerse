@@ -1950,6 +1950,606 @@ export const ACTIVE_TOOLS = [
     name: 'Proportions Predictor',
     category: 'Math',
     tags: ['proportions', 'predictor', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'code-python-formatter',
+    name: 'Python Formatter',
+    category: 'Developer Tools',
+    tags: ['python', 'formatter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-linter',
+    name: 'Python Linter',
+    category: 'Developer Tools',
+    tags: ['python', 'linter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-minifier',
+    name: 'Python Minifier',
+    category: 'Developer Tools',
+    tags: ['python', 'minifier', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-obfuscator',
+    name: 'Python Obfuscator',
+    category: 'Developer Tools',
+    tags: ['python', 'obfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-deobfuscator',
+    name: 'Python Deobfuscator',
+    category: 'Developer Tools',
+    tags: ['python', 'deobfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-compiler',
+    name: 'Python Compiler',
+    category: 'Developer Tools',
+    tags: ['python', 'compiler', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-interpreter',
+    name: 'Python Interpreter',
+    category: 'Developer Tools',
+    tags: ['python', 'interpreter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-syntax-checker',
+    name: 'Python Syntax Checker',
+    category: 'Developer Tools',
+    tags: ['python', 'syntax checker', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-documentation-generator',
+    name: 'Python Documentation Generator',
+    category: 'Developer Tools',
+    tags: ['python', 'documentation generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-snippet-generator',
+    name: 'Python Snippet Generator',
+    category: 'Developer Tools',
+    tags: ['python', 'snippet generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-type-converter',
+    name: 'Python Type Converter',
+    category: 'Developer Tools',
+    tags: ['python', 'type converter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-boilerplate-generator',
+    name: 'Python Boilerplate Generator',
+    category: 'Developer Tools',
+    tags: ['python', 'boilerplate generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-regex-tester',
+    name: 'Python Regex Tester',
+    category: 'Developer Tools',
+    tags: ['python', 'regex tester', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-python-ast-viewer',
+    name: 'Python AST Viewer',
+    category: 'Developer Tools',
+    tags: ['python', 'ast viewer', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-formatter',
+    name: 'JavaScript Formatter',
+    category: 'Developer Tools',
+    tags: ['javascript', 'formatter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-linter',
+    name: 'JavaScript Linter',
+    category: 'Developer Tools',
+    tags: ['javascript', 'linter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-minifier',
+    name: 'JavaScript Minifier',
+    category: 'Developer Tools',
+    tags: ['javascript', 'minifier', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-obfuscator',
+    name: 'JavaScript Obfuscator',
+    category: 'Developer Tools',
+    tags: ['javascript', 'obfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-deobfuscator',
+    name: 'JavaScript Deobfuscator',
+    category: 'Developer Tools',
+    tags: ['javascript', 'deobfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-compiler',
+    name: 'JavaScript Compiler',
+    category: 'Developer Tools',
+    tags: ['javascript', 'compiler', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-interpreter',
+    name: 'JavaScript Interpreter',
+    category: 'Developer Tools',
+    tags: ['javascript', 'interpreter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-syntax-checker',
+    name: 'JavaScript Syntax Checker',
+    category: 'Developer Tools',
+    tags: ['javascript', 'syntax checker', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-documentation-generator',
+    name: 'JavaScript Documentation Generator',
+    category: 'Developer Tools',
+    tags: ['javascript', 'documentation generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-snippet-generator',
+    name: 'JavaScript Snippet Generator',
+    category: 'Developer Tools',
+    tags: ['javascript', 'snippet generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-type-converter',
+    name: 'JavaScript Type Converter',
+    category: 'Developer Tools',
+    tags: ['javascript', 'type converter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-boilerplate-generator',
+    name: 'JavaScript Boilerplate Generator',
+    category: 'Developer Tools',
+    tags: ['javascript', 'boilerplate generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-regex-tester',
+    name: 'JavaScript Regex Tester',
+    category: 'Developer Tools',
+    tags: ['javascript', 'regex tester', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-javascript-ast-viewer',
+    name: 'JavaScript AST Viewer',
+    category: 'Developer Tools',
+    tags: ['javascript', 'ast viewer', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-formatter',
+    name: 'TypeScript Formatter',
+    category: 'Developer Tools',
+    tags: ['typescript', 'formatter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-linter',
+    name: 'TypeScript Linter',
+    category: 'Developer Tools',
+    tags: ['typescript', 'linter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-minifier',
+    name: 'TypeScript Minifier',
+    category: 'Developer Tools',
+    tags: ['typescript', 'minifier', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-obfuscator',
+    name: 'TypeScript Obfuscator',
+    category: 'Developer Tools',
+    tags: ['typescript', 'obfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-deobfuscator',
+    name: 'TypeScript Deobfuscator',
+    category: 'Developer Tools',
+    tags: ['typescript', 'deobfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-compiler',
+    name: 'TypeScript Compiler',
+    category: 'Developer Tools',
+    tags: ['typescript', 'compiler', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-interpreter',
+    name: 'TypeScript Interpreter',
+    category: 'Developer Tools',
+    tags: ['typescript', 'interpreter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-syntax-checker',
+    name: 'TypeScript Syntax Checker',
+    category: 'Developer Tools',
+    tags: ['typescript', 'syntax checker', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-documentation-generator',
+    name: 'TypeScript Documentation Generator',
+    category: 'Developer Tools',
+    tags: ['typescript', 'documentation generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-snippet-generator',
+    name: 'TypeScript Snippet Generator',
+    category: 'Developer Tools',
+    tags: ['typescript', 'snippet generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-type-converter',
+    name: 'TypeScript Type Converter',
+    category: 'Developer Tools',
+    tags: ['typescript', 'type converter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-boilerplate-generator',
+    name: 'TypeScript Boilerplate Generator',
+    category: 'Developer Tools',
+    tags: ['typescript', 'boilerplate generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-regex-tester',
+    name: 'TypeScript Regex Tester',
+    category: 'Developer Tools',
+    tags: ['typescript', 'regex tester', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-typescript-ast-viewer',
+    name: 'TypeScript AST Viewer',
+    category: 'Developer Tools',
+    tags: ['typescript', 'ast viewer', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-formatter',
+    name: 'Java Formatter',
+    category: 'Developer Tools',
+    tags: ['java', 'formatter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-linter',
+    name: 'Java Linter',
+    category: 'Developer Tools',
+    tags: ['java', 'linter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-minifier',
+    name: 'Java Minifier',
+    category: 'Developer Tools',
+    tags: ['java', 'minifier', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-obfuscator',
+    name: 'Java Obfuscator',
+    category: 'Developer Tools',
+    tags: ['java', 'obfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-deobfuscator',
+    name: 'Java Deobfuscator',
+    category: 'Developer Tools',
+    tags: ['java', 'deobfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-compiler',
+    name: 'Java Compiler',
+    category: 'Developer Tools',
+    tags: ['java', 'compiler', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-interpreter',
+    name: 'Java Interpreter',
+    category: 'Developer Tools',
+    tags: ['java', 'interpreter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-syntax-checker',
+    name: 'Java Syntax Checker',
+    category: 'Developer Tools',
+    tags: ['java', 'syntax checker', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-documentation-generator',
+    name: 'Java Documentation Generator',
+    category: 'Developer Tools',
+    tags: ['java', 'documentation generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-snippet-generator',
+    name: 'Java Snippet Generator',
+    category: 'Developer Tools',
+    tags: ['java', 'snippet generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-type-converter',
+    name: 'Java Type Converter',
+    category: 'Developer Tools',
+    tags: ['java', 'type converter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-boilerplate-generator',
+    name: 'Java Boilerplate Generator',
+    category: 'Developer Tools',
+    tags: ['java', 'boilerplate generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-regex-tester',
+    name: 'Java Regex Tester',
+    category: 'Developer Tools',
+    tags: ['java', 'regex tester', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-java-ast-viewer',
+    name: 'Java AST Viewer',
+    category: 'Developer Tools',
+    tags: ['java', 'ast viewer', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-formatter',
+    name: 'C++ Formatter',
+    category: 'Developer Tools',
+    tags: ['c++', 'formatter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-linter',
+    name: 'C++ Linter',
+    category: 'Developer Tools',
+    tags: ['c++', 'linter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-minifier',
+    name: 'C++ Minifier',
+    category: 'Developer Tools',
+    tags: ['c++', 'minifier', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-obfuscator',
+    name: 'C++ Obfuscator',
+    category: 'Developer Tools',
+    tags: ['c++', 'obfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-deobfuscator',
+    name: 'C++ Deobfuscator',
+    category: 'Developer Tools',
+    tags: ['c++', 'deobfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-compiler',
+    name: 'C++ Compiler',
+    category: 'Developer Tools',
+    tags: ['c++', 'compiler', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-interpreter',
+    name: 'C++ Interpreter',
+    category: 'Developer Tools',
+    tags: ['c++', 'interpreter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-syntax-checker',
+    name: 'C++ Syntax Checker',
+    category: 'Developer Tools',
+    tags: ['c++', 'syntax checker', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-documentation-generator',
+    name: 'C++ Documentation Generator',
+    category: 'Developer Tools',
+    tags: ['c++', 'documentation generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-snippet-generator',
+    name: 'C++ Snippet Generator',
+    category: 'Developer Tools',
+    tags: ['c++', 'snippet generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-type-converter',
+    name: 'C++ Type Converter',
+    category: 'Developer Tools',
+    tags: ['c++', 'type converter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-boilerplate-generator',
+    name: 'C++ Boilerplate Generator',
+    category: 'Developer Tools',
+    tags: ['c++', 'boilerplate generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-regex-tester',
+    name: 'C++ Regex Tester',
+    category: 'Developer Tools',
+    tags: ['c++', 'regex tester', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c++-ast-viewer',
+    name: 'C++ AST Viewer',
+    category: 'Developer Tools',
+    tags: ['c++', 'ast viewer', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-formatter',
+    name: 'C# Formatter',
+    category: 'Developer Tools',
+    tags: ['c#', 'formatter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-linter',
+    name: 'C# Linter',
+    category: 'Developer Tools',
+    tags: ['c#', 'linter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-minifier',
+    name: 'C# Minifier',
+    category: 'Developer Tools',
+    tags: ['c#', 'minifier', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-obfuscator',
+    name: 'C# Obfuscator',
+    category: 'Developer Tools',
+    tags: ['c#', 'obfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-deobfuscator',
+    name: 'C# Deobfuscator',
+    category: 'Developer Tools',
+    tags: ['c#', 'deobfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-compiler',
+    name: 'C# Compiler',
+    category: 'Developer Tools',
+    tags: ['c#', 'compiler', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-interpreter',
+    name: 'C# Interpreter',
+    category: 'Developer Tools',
+    tags: ['c#', 'interpreter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-syntax-checker',
+    name: 'C# Syntax Checker',
+    category: 'Developer Tools',
+    tags: ['c#', 'syntax checker', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-documentation-generator',
+    name: 'C# Documentation Generator',
+    category: 'Developer Tools',
+    tags: ['c#', 'documentation generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-snippet-generator',
+    name: 'C# Snippet Generator',
+    category: 'Developer Tools',
+    tags: ['c#', 'snippet generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-type-converter',
+    name: 'C# Type Converter',
+    category: 'Developer Tools',
+    tags: ['c#', 'type converter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-boilerplate-generator',
+    name: 'C# Boilerplate Generator',
+    category: 'Developer Tools',
+    tags: ['c#', 'boilerplate generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-regex-tester',
+    name: 'C# Regex Tester',
+    category: 'Developer Tools',
+    tags: ['c#', 'regex tester', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-c#-ast-viewer',
+    name: 'C# AST Viewer',
+    category: 'Developer Tools',
+    tags: ['c#', 'ast viewer', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-formatter',
+    name: 'Ruby Formatter',
+    category: 'Developer Tools',
+    tags: ['ruby', 'formatter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-linter',
+    name: 'Ruby Linter',
+    category: 'Developer Tools',
+    tags: ['ruby', 'linter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-minifier',
+    name: 'Ruby Minifier',
+    category: 'Developer Tools',
+    tags: ['ruby', 'minifier', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-obfuscator',
+    name: 'Ruby Obfuscator',
+    category: 'Developer Tools',
+    tags: ['ruby', 'obfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-deobfuscator',
+    name: 'Ruby Deobfuscator',
+    category: 'Developer Tools',
+    tags: ['ruby', 'deobfuscator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-compiler',
+    name: 'Ruby Compiler',
+    category: 'Developer Tools',
+    tags: ['ruby', 'compiler', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-interpreter',
+    name: 'Ruby Interpreter',
+    category: 'Developer Tools',
+    tags: ['ruby', 'interpreter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-syntax-checker',
+    name: 'Ruby Syntax Checker',
+    category: 'Developer Tools',
+    tags: ['ruby', 'syntax checker', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-documentation-generator',
+    name: 'Ruby Documentation Generator',
+    category: 'Developer Tools',
+    tags: ['ruby', 'documentation generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-snippet-generator',
+    name: 'Ruby Snippet Generator',
+    category: 'Developer Tools',
+    tags: ['ruby', 'snippet generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-type-converter',
+    name: 'Ruby Type Converter',
+    category: 'Developer Tools',
+    tags: ['ruby', 'type converter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-boilerplate-generator',
+    name: 'Ruby Boilerplate Generator',
+    category: 'Developer Tools',
+    tags: ['ruby', 'boilerplate generator', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-regex-tester',
+    name: 'Ruby Regex Tester',
+    category: 'Developer Tools',
+    tags: ['ruby', 'regex tester', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-ruby-ast-viewer',
+    name: 'Ruby AST Viewer',
+    category: 'Developer Tools',
+    tags: ['ruby', 'ast viewer', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-php-formatter',
+    name: 'PHP Formatter',
+    category: 'Developer Tools',
+    tags: ['php', 'formatter', 'code', 'developer', 'programming']
+  },
+  {
+    id: 'code-php-linter',
+    name: 'PHP Linter',
+    category: 'Developer Tools',
+    tags: ['php', 'linter', 'code', 'developer', 'programming']
   }
 ];
 
