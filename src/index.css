@@ -46,3 +46,17 @@
 ::-webkit-scrollbar-track { background: var(--color-surface-container-lowest); }
 ::-webkit-scrollbar-thumb { background: var(--color-surface-container-highest); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-outline); }
+
+/* Markdown Styles */
+.markdown-body h1 { @apply text-3xl font-bold mb-4 font-heading; }
+.markdown-body h2 { @apply text-2xl font-semibold mt-6 mb-3 font-heading; }
+.markdown-body h3 { @apply text-xl font-medium mt-4 mb-2 font-heading; }
+.markdown-body p { @apply text-sm mb-4 leading-relaxed; }
+.markdown-body a { @apply text-blue-600 hover:text-blue-800 underline transition-colors; }
+.markdown-body ul { @apply list-disc list-inside mb-4; }
+.markdown-body ol { @apply list-decimal list-inside mb-4; }
+.markdown-body li { @apply text-sm mb-1; }
+.markdown-body pre { @apply bg-gray-100 p-4 rounded-lg my-4 overflow-x-auto; }
+.markdown-body code { @apply font-mono text-[13px] bg-gray-100 px-1.5 py-0.5 rounded text-gray-800; }
+.markdown-body pre code { @apply bg-transparent p-0 text-gray-800; }
+.markdown-body blockquote { @apply border-l-4 border-gray-300 pl-4 py-1 my-4 text-gray-600 italic; }

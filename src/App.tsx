@@ -7,6 +7,11 @@ import TextFormatterTool from './components/TextFormatterTool';
 import JsonFormatterTool from './components/JsonFormatterTool';
 import ColorConverterTool from './components/ColorConverterTool';
 import PasswordGeneratorTool from './components/PasswordGeneratorTool';
+import Base64ConverterTool from './components/Base64ConverterTool';
+import UrlEncoderTool from './components/UrlEncoderTool';
+import QrCodeGeneratorTool from './components/QrCodeGeneratorTool';
+import HashGeneratorTool from './components/HashGeneratorTool';
+import MarkdownPreviewTool from './components/MarkdownPreviewTool';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<'landing' | string>('landing');
@@ -45,6 +50,26 @@ export default function App() {
         <PasswordGeneratorTool onBack={() => setCurrentView('landing')} />
       )}
 
+      {currentView === 'base64-converter' && (
+        <Base64ConverterTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'url-encoder' && (
+        <UrlEncoderTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'qrcode-generator' && (
+        <QrCodeGeneratorTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'hash-generator' && (
+        <HashGeneratorTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'markdown-preview' && (
+        <MarkdownPreviewTool onBack={() => setCurrentView('landing')} />
+      )}
+
       {/* Fallback for tools we haven't implemented yet */}
       {currentView !== 'landing' && 
        currentView !== 'image-cropper' && 
@@ -53,7 +78,12 @@ export default function App() {
        currentView !== 'text-formatter' && 
        currentView !== 'json-formatter' && 
        currentView !== 'color-converter' && 
-       currentView !== 'password-generator' && (
+       currentView !== 'password-generator' && 
+       currentView !== 'base64-converter' && 
+       currentView !== 'url-encoder' && 
+       currentView !== 'qrcode-generator' && 
+       currentView !== 'hash-generator' && 
+       currentView !== 'markdown-preview' && (
         <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center">
           <h2 className="text-2xl font-bold mb-4 font-heading text-primary">Coming Soon</h2>
           <p className="text-on-surface-variant mb-8 max-w-md">
