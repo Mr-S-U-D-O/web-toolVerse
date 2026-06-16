@@ -1350,6 +1350,606 @@ export const ACTIVE_TOOLS = [
     name: 'Tax Updater',
     category: 'Finance',
     tags: ['tax', 'updater', 'finance', 'money', 'calculator']
+  },
+  {
+    id: 'math-algebra-calculator',
+    name: 'Algebra Calculator',
+    category: 'Math',
+    tags: ['algebra', 'calculator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-algebra-solver',
+    name: 'Algebra Solver',
+    category: 'Math',
+    tags: ['algebra', 'solver', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-algebra-grapher',
+    name: 'Algebra Grapher',
+    category: 'Math',
+    tags: ['algebra', 'grapher', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-algebra-converter',
+    name: 'Algebra Converter',
+    category: 'Math',
+    tags: ['algebra', 'converter', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-algebra-generator',
+    name: 'Algebra Generator',
+    category: 'Math',
+    tags: ['algebra', 'generator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-algebra-analyzer',
+    name: 'Algebra Analyzer',
+    category: 'Math',
+    tags: ['algebra', 'analyzer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-algebra-visualizer',
+    name: 'Algebra Visualizer',
+    category: 'Math',
+    tags: ['algebra', 'visualizer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-algebra-simulator',
+    name: 'Algebra Simulator',
+    category: 'Math',
+    tags: ['algebra', 'simulator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-algebra-estimator',
+    name: 'Algebra Estimator',
+    category: 'Math',
+    tags: ['algebra', 'estimator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-algebra-predictor',
+    name: 'Algebra Predictor',
+    category: 'Math',
+    tags: ['algebra', 'predictor', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-geometry-calculator',
+    name: 'Geometry Calculator',
+    category: 'Math',
+    tags: ['geometry', 'calculator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-geometry-solver',
+    name: 'Geometry Solver',
+    category: 'Math',
+    tags: ['geometry', 'solver', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-geometry-grapher',
+    name: 'Geometry Grapher',
+    category: 'Math',
+    tags: ['geometry', 'grapher', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-geometry-converter',
+    name: 'Geometry Converter',
+    category: 'Math',
+    tags: ['geometry', 'converter', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-geometry-generator',
+    name: 'Geometry Generator',
+    category: 'Math',
+    tags: ['geometry', 'generator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-geometry-analyzer',
+    name: 'Geometry Analyzer',
+    category: 'Math',
+    tags: ['geometry', 'analyzer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-geometry-visualizer',
+    name: 'Geometry Visualizer',
+    category: 'Math',
+    tags: ['geometry', 'visualizer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-geometry-simulator',
+    name: 'Geometry Simulator',
+    category: 'Math',
+    tags: ['geometry', 'simulator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-geometry-estimator',
+    name: 'Geometry Estimator',
+    category: 'Math',
+    tags: ['geometry', 'estimator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-geometry-predictor',
+    name: 'Geometry Predictor',
+    category: 'Math',
+    tags: ['geometry', 'predictor', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-calculus-calculator',
+    name: 'Calculus Calculator',
+    category: 'Math',
+    tags: ['calculus', 'calculator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-calculus-solver',
+    name: 'Calculus Solver',
+    category: 'Math',
+    tags: ['calculus', 'solver', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-calculus-grapher',
+    name: 'Calculus Grapher',
+    category: 'Math',
+    tags: ['calculus', 'grapher', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-calculus-converter',
+    name: 'Calculus Converter',
+    category: 'Math',
+    tags: ['calculus', 'converter', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-calculus-generator',
+    name: 'Calculus Generator',
+    category: 'Math',
+    tags: ['calculus', 'generator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-calculus-analyzer',
+    name: 'Calculus Analyzer',
+    category: 'Math',
+    tags: ['calculus', 'analyzer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-calculus-visualizer',
+    name: 'Calculus Visualizer',
+    category: 'Math',
+    tags: ['calculus', 'visualizer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-calculus-simulator',
+    name: 'Calculus Simulator',
+    category: 'Math',
+    tags: ['calculus', 'simulator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-calculus-estimator',
+    name: 'Calculus Estimator',
+    category: 'Math',
+    tags: ['calculus', 'estimator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-calculus-predictor',
+    name: 'Calculus Predictor',
+    category: 'Math',
+    tags: ['calculus', 'predictor', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-trigonometry-calculator',
+    name: 'Trigonometry Calculator',
+    category: 'Math',
+    tags: ['trigonometry', 'calculator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-trigonometry-solver',
+    name: 'Trigonometry Solver',
+    category: 'Math',
+    tags: ['trigonometry', 'solver', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-trigonometry-grapher',
+    name: 'Trigonometry Grapher',
+    category: 'Math',
+    tags: ['trigonometry', 'grapher', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-trigonometry-converter',
+    name: 'Trigonometry Converter',
+    category: 'Math',
+    tags: ['trigonometry', 'converter', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-trigonometry-generator',
+    name: 'Trigonometry Generator',
+    category: 'Math',
+    tags: ['trigonometry', 'generator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-trigonometry-analyzer',
+    name: 'Trigonometry Analyzer',
+    category: 'Math',
+    tags: ['trigonometry', 'analyzer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-trigonometry-visualizer',
+    name: 'Trigonometry Visualizer',
+    category: 'Math',
+    tags: ['trigonometry', 'visualizer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-trigonometry-simulator',
+    name: 'Trigonometry Simulator',
+    category: 'Math',
+    tags: ['trigonometry', 'simulator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-trigonometry-estimator',
+    name: 'Trigonometry Estimator',
+    category: 'Math',
+    tags: ['trigonometry', 'estimator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-trigonometry-predictor',
+    name: 'Trigonometry Predictor',
+    category: 'Math',
+    tags: ['trigonometry', 'predictor', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-statistics-calculator',
+    name: 'Statistics Calculator',
+    category: 'Math',
+    tags: ['statistics', 'calculator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-statistics-solver',
+    name: 'Statistics Solver',
+    category: 'Math',
+    tags: ['statistics', 'solver', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-statistics-grapher',
+    name: 'Statistics Grapher',
+    category: 'Math',
+    tags: ['statistics', 'grapher', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-statistics-converter',
+    name: 'Statistics Converter',
+    category: 'Math',
+    tags: ['statistics', 'converter', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-statistics-generator',
+    name: 'Statistics Generator',
+    category: 'Math',
+    tags: ['statistics', 'generator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-statistics-analyzer',
+    name: 'Statistics Analyzer',
+    category: 'Math',
+    tags: ['statistics', 'analyzer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-statistics-visualizer',
+    name: 'Statistics Visualizer',
+    category: 'Math',
+    tags: ['statistics', 'visualizer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-statistics-simulator',
+    name: 'Statistics Simulator',
+    category: 'Math',
+    tags: ['statistics', 'simulator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-statistics-estimator',
+    name: 'Statistics Estimator',
+    category: 'Math',
+    tags: ['statistics', 'estimator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-statistics-predictor',
+    name: 'Statistics Predictor',
+    category: 'Math',
+    tags: ['statistics', 'predictor', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-probability-calculator',
+    name: 'Probability Calculator',
+    category: 'Math',
+    tags: ['probability', 'calculator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-probability-solver',
+    name: 'Probability Solver',
+    category: 'Math',
+    tags: ['probability', 'solver', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-probability-grapher',
+    name: 'Probability Grapher',
+    category: 'Math',
+    tags: ['probability', 'grapher', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-probability-converter',
+    name: 'Probability Converter',
+    category: 'Math',
+    tags: ['probability', 'converter', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-probability-generator',
+    name: 'Probability Generator',
+    category: 'Math',
+    tags: ['probability', 'generator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-probability-analyzer',
+    name: 'Probability Analyzer',
+    category: 'Math',
+    tags: ['probability', 'analyzer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-probability-visualizer',
+    name: 'Probability Visualizer',
+    category: 'Math',
+    tags: ['probability', 'visualizer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-probability-simulator',
+    name: 'Probability Simulator',
+    category: 'Math',
+    tags: ['probability', 'simulator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-probability-estimator',
+    name: 'Probability Estimator',
+    category: 'Math',
+    tags: ['probability', 'estimator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-probability-predictor',
+    name: 'Probability Predictor',
+    category: 'Math',
+    tags: ['probability', 'predictor', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-fractions-calculator',
+    name: 'Fractions Calculator',
+    category: 'Math',
+    tags: ['fractions', 'calculator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-fractions-solver',
+    name: 'Fractions Solver',
+    category: 'Math',
+    tags: ['fractions', 'solver', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-fractions-grapher',
+    name: 'Fractions Grapher',
+    category: 'Math',
+    tags: ['fractions', 'grapher', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-fractions-converter',
+    name: 'Fractions Converter',
+    category: 'Math',
+    tags: ['fractions', 'converter', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-fractions-generator',
+    name: 'Fractions Generator',
+    category: 'Math',
+    tags: ['fractions', 'generator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-fractions-analyzer',
+    name: 'Fractions Analyzer',
+    category: 'Math',
+    tags: ['fractions', 'analyzer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-fractions-visualizer',
+    name: 'Fractions Visualizer',
+    category: 'Math',
+    tags: ['fractions', 'visualizer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-fractions-simulator',
+    name: 'Fractions Simulator',
+    category: 'Math',
+    tags: ['fractions', 'simulator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-fractions-estimator',
+    name: 'Fractions Estimator',
+    category: 'Math',
+    tags: ['fractions', 'estimator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-fractions-predictor',
+    name: 'Fractions Predictor',
+    category: 'Math',
+    tags: ['fractions', 'predictor', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-percentages-calculator',
+    name: 'Percentages Calculator',
+    category: 'Math',
+    tags: ['percentages', 'calculator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-percentages-solver',
+    name: 'Percentages Solver',
+    category: 'Math',
+    tags: ['percentages', 'solver', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-percentages-grapher',
+    name: 'Percentages Grapher',
+    category: 'Math',
+    tags: ['percentages', 'grapher', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-percentages-converter',
+    name: 'Percentages Converter',
+    category: 'Math',
+    tags: ['percentages', 'converter', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-percentages-generator',
+    name: 'Percentages Generator',
+    category: 'Math',
+    tags: ['percentages', 'generator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-percentages-analyzer',
+    name: 'Percentages Analyzer',
+    category: 'Math',
+    tags: ['percentages', 'analyzer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-percentages-visualizer',
+    name: 'Percentages Visualizer',
+    category: 'Math',
+    tags: ['percentages', 'visualizer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-percentages-simulator',
+    name: 'Percentages Simulator',
+    category: 'Math',
+    tags: ['percentages', 'simulator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-percentages-estimator',
+    name: 'Percentages Estimator',
+    category: 'Math',
+    tags: ['percentages', 'estimator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-percentages-predictor',
+    name: 'Percentages Predictor',
+    category: 'Math',
+    tags: ['percentages', 'predictor', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-ratios-calculator',
+    name: 'Ratios Calculator',
+    category: 'Math',
+    tags: ['ratios', 'calculator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-ratios-solver',
+    name: 'Ratios Solver',
+    category: 'Math',
+    tags: ['ratios', 'solver', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-ratios-grapher',
+    name: 'Ratios Grapher',
+    category: 'Math',
+    tags: ['ratios', 'grapher', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-ratios-converter',
+    name: 'Ratios Converter',
+    category: 'Math',
+    tags: ['ratios', 'converter', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-ratios-generator',
+    name: 'Ratios Generator',
+    category: 'Math',
+    tags: ['ratios', 'generator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-ratios-analyzer',
+    name: 'Ratios Analyzer',
+    category: 'Math',
+    tags: ['ratios', 'analyzer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-ratios-visualizer',
+    name: 'Ratios Visualizer',
+    category: 'Math',
+    tags: ['ratios', 'visualizer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-ratios-simulator',
+    name: 'Ratios Simulator',
+    category: 'Math',
+    tags: ['ratios', 'simulator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-ratios-estimator',
+    name: 'Ratios Estimator',
+    category: 'Math',
+    tags: ['ratios', 'estimator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-ratios-predictor',
+    name: 'Ratios Predictor',
+    category: 'Math',
+    tags: ['ratios', 'predictor', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-proportions-calculator',
+    name: 'Proportions Calculator',
+    category: 'Math',
+    tags: ['proportions', 'calculator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-proportions-solver',
+    name: 'Proportions Solver',
+    category: 'Math',
+    tags: ['proportions', 'solver', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-proportions-grapher',
+    name: 'Proportions Grapher',
+    category: 'Math',
+    tags: ['proportions', 'grapher', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-proportions-converter',
+    name: 'Proportions Converter',
+    category: 'Math',
+    tags: ['proportions', 'converter', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-proportions-generator',
+    name: 'Proportions Generator',
+    category: 'Math',
+    tags: ['proportions', 'generator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-proportions-analyzer',
+    name: 'Proportions Analyzer',
+    category: 'Math',
+    tags: ['proportions', 'analyzer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-proportions-visualizer',
+    name: 'Proportions Visualizer',
+    category: 'Math',
+    tags: ['proportions', 'visualizer', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-proportions-simulator',
+    name: 'Proportions Simulator',
+    category: 'Math',
+    tags: ['proportions', 'simulator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-proportions-estimator',
+    name: 'Proportions Estimator',
+    category: 'Math',
+    tags: ['proportions', 'estimator', 'math', 'calculator', 'numbers']
+  },
+  {
+    id: 'math-proportions-predictor',
+    name: 'Proportions Predictor',
+    category: 'Math',
+    tags: ['proportions', 'predictor', 'math', 'calculator', 'numbers']
   }
 ];
 

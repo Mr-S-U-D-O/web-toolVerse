@@ -24,6 +24,8 @@ import BmiCalculatorTool from './components/BmiCalculatorTool';
 import CsvToJsonTool from './components/CsvToJsonTool';
 import AnyTextTool from './components/AnyTextTool';
 import AnyFinTool from './components/AnyFinTool';
+import AnyMathTool from './components/AnyMathTool';
+import RelatedTools from './components/RelatedTools';
 import { ACTIVE_TOOLS } from './components/LandingPage';
 
 export default function App() {
@@ -147,8 +149,20 @@ export default function App() {
          return null;
       })()}
 
+      {/* Generic Math tools render */}
+      {currentView.startsWith('math-') && !['math-percentages-calculator'].includes(currentView) && (() => {
+         const match = currentView.match(/^math-(.+)-(.+)$/);
+         if (match) {
+            const selectedTool = ACTIVE_TOOLS.find(t => t.id === currentView);
+            if (selectedTool) {
+               return <AnyMathTool onBack={() => setCurrentView('landing')} title={selectedTool.name} action={match[2]} topic={match[1]} />
+            }
+         }
+         return null;
+      })()}
+
       {/* Fallback for tools we haven't implemented yet */}
-      {!currentView.startsWith('text-') && !currentView.startsWith('fin-') && currentView !== 'landing' && 
+      {!currentView.startsWith('text-') && !currentView.startsWith('fin-') && !currentView.startsWith('math-') && currentView !== 'landing' && 
        currentView !== 'image-cropper' && 
        currentView !== 'image-compressor' && 
        currentView !== 'image-resizer' && 
@@ -183,6 +197,10 @@ export default function App() {
             Back to Tools
           </button>
         </div>
+      )}
+
+      {currentView !== 'landing' && (
+        <RelatedTools currentToolId={currentView} onNavigate={setCurrentView} />
       )}
     </div>
   );
