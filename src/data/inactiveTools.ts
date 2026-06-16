@@ -93,6 +93,46 @@ export function getInactiveTools() {
   
   // Total tools = 1640 + 180 + 434 + 760 + 540 + 1116 = 4670 tools
 
+  const seoTopics = ['Keywords', 'Backlinks', 'Traffic', 'Ranking', 'SERP', 'Domain', 'Meta', 'H1', 'Links', 'Images', 'Alt Text', 'Sitemap', 'Robots', 'Canonical', 'Redirects', '404', 'Performance', 'Mobile', 'Vitals', 'CTR', 'Impressions', 'Clicks', 'Bounce', 'Session', 'Conversion', 'RoI', 'PPC', 'AdWords', 'Analytics', 'Tag Manager', 'Social', 'Local SEO', 'GMB', 'Reviews', 'Citations', 'NAP', 'Schema', 'Snippets', 'Knowledge', 'Voice', 'Video SEO', 'ASO', 'Content', 'Blog', 'Article', 'Landing Page', 'PR'];
+  const seoActions = ['Analyzer', 'Checker', 'Generator', 'Tracker', 'Monitor', 'Auditor', 'Extractor', 'Scraper', 'Finder', 'Explorer', 'Planner', 'Optimizer', 'Validator', 'Builder', 'Simulator', 'Estimator', 'Reporter', 'Dashboard', 'Visualizer', 'Comparator', 'Benchmarker'];
+  for (const t of seoTopics) {
+      for (const a of seoActions) {
+          tools.push({ id: `seo-${t.toLowerCase().replace(' ', '-')}-${a.toLowerCase()}`, name: `${t} ${a}`, category: 'SEO & Marketing', tags: [t.toLowerCase(), a.toLowerCase(), 'seo', 'marketing'] });
+      }
+  }
+
+  const aiTopics = ['Text', 'Image', 'Audio', 'Video', '3D', 'Code', 'Data', 'Model', 'Prompt', 'Token', 'Embeddings', 'Dataset', 'Chatbot', 'Agent', 'Workflow', 'Pipeline', 'UI', 'Website', 'App', 'Game', 'Music', 'Voice', 'Speech', 'Translation', 'Summary', 'Essay', 'Poem', 'Story', 'Snippet', 'Regex', 'SQL', 'NoSQL', 'Graph', 'Chart', 'Presentation', 'Spreadsheet', 'Document', 'PDF', 'Email', 'Message', 'Reply', 'Post', 'Tweet', 'Ad', 'Copy', 'Headline', 'Title', 'Subject', 'Bio', 'Description', 'Review', 'Comment', 'Feedback', 'Survey', 'Poll'];
+  const aiActions = ['Generator', 'Creator', 'Maker', 'Builder', 'Writer', 'Composer', 'Designer', 'Editor', 'Improver', 'Enhancer', 'Upscaler', 'Refiner', 'Analyzer', 'Evaluator', 'Scorer', 'Reviewer', 'Critique', 'Summarizer', 'Expander', 'Translator', 'Paraphraser', 'Rewriter'];
+  for (const t of aiTopics) {
+      for (const a of aiActions) {
+          tools.push({ id: `ai-${t.toLowerCase().replace(' ', '-')}-${a.toLowerCase()}`, name: `AI ${t} ${a}`, category: 'Artificial Intelligence', tags: ['ai', t.toLowerCase(), a.toLowerCase(), 'generator'] });
+      }
+  }
+
+  const finTopics = ['Mortgage', 'Loan', 'Interest', 'Compound', 'Tax', 'Salary', 'Hourly', 'Budget', 'Expense', 'Income', 'Savings', 'Investment', 'Retirement', '401k', 'IRA', 'Stocks', 'Bonds', 'Options', 'Futures', 'Forex', 'Crypto', 'Bitcoin', 'Ethereum', 'NFT', 'DeFi', 'Yield', 'Margin', 'Leverage', 'Dividend', 'Portfolio', 'Risk', 'Volatility', 'Beta', 'Alpha', 'Sharpe', 'Sortino', 'Treynor', 'CAPM', 'WACC', 'DCF', 'NPV', 'IRR', 'ROI', 'ROE', 'ROA', 'EBITDA', 'P/E', 'EPS', 'Revenue', 'Profit', 'Markup', 'Discount', 'Sale'];
+  const finActions = ['Calculator', 'Estimator', 'Projector', 'Forecaster', 'Planner', 'Tracker', 'Monitor', 'Analyzer', 'Visualizer', 'Chart', 'Graph', 'Simulator', 'Modeler', 'Optimizer', 'Converter', 'Updater', 'Fetcher', 'Screener', 'Scanner', 'Alert', 'Notifier'];
+  for (const t of finTopics) {
+      for (const a of finActions) {
+          tools.push({ id: `fin-${t.toLowerCase().replace(' ', '-')}-${a.toLowerCase()}`, name: `${t} ${a}`, category: 'Finance', tags: [t.toLowerCase(), a.toLowerCase(), 'finance', 'money'] });
+      }
+  }
+
+  const healthTopics = ['BMI', 'BMR', 'TDEE', 'Macros', 'Calories', 'Protein', 'Carbs', 'Fat', 'Water', 'Sleep', 'Heart Rate', 'Blood Pressure', 'Blood Sugar', 'Cholesterol', 'Weight', 'Height', 'Body Fat', 'Muscle Mass', 'Bone Density', 'Steps', 'Distance', 'Pace', 'Speed', 'Cadence', 'VO2 Max', 'Power', 'Wattage', 'Resistance', 'Reps', 'Sets', 'Volume', '1RM', 'Wilks', 'Dots', 'Sinclair', 'Pregnancy', 'Ovulation', 'Period', 'Fertility', 'Due Date', 'Milestones', 'Vaccination', 'Medication', 'Supplement', 'Vitamin', 'Mineral', 'Allergy', 'Symptom', 'Disease', 'Condition', 'Treatment', 'Therapy', 'Recovery', 'Rehab'];
+  const healthActions = ['Tracker', 'Calculator', 'Log', 'Journal', 'Diary', 'Planner', 'Schedule', 'Routine', 'Program', 'Plan', 'Guide', 'Coach', 'Monitor', 'Analyzer', 'Estimator', 'Predictor', 'Checker', 'Test', 'Quiz', 'Assessment', 'Profile'];
+  for (const t of healthTopics) {
+      for (const a of healthActions) {
+          tools.push({ id: `health-${t.toLowerCase().replace(' ', '-')}-${a.toLowerCase()}`, name: `${t} ${a}`, category: 'Health & Fitness', tags: [t.toLowerCase(), a.toLowerCase(), 'health', 'fitness', 'medical'] });
+      }
+  }
+
+  const audioTopics = ['MP3', 'WAV', 'FLAC', 'AAC', 'OGG', 'M4A', 'WMA', 'ALAC', 'AIFF', 'DSD', 'MIDI', 'Voice', 'Speech', 'Music', 'Song', 'Track', 'Album', 'Podcast', 'Audiobook', 'Sound Effect', 'Ringtone', 'Alarm', 'Notification', 'Beat', 'Sample', 'Loop', 'Stem', 'Vocals', 'Instrumental', 'Bass', 'Drums', 'Guitar', 'Piano', 'Synth', 'Strings', 'Brass', 'Woodwinds', 'Percussion', 'Choir', 'Orchestra', 'Band', 'Concert', 'Live', 'Studio', 'Master', 'Mix', 'Remix', 'Mashup', 'Cover', 'Karaoke', 'Acapella'];
+  const audioActions = ['Converter', 'Compressor', 'Extractor', 'Trimmer', 'Cutter', 'Joiner', 'Merger', 'Splitter', 'Mixer', 'Equalizer', 'Normalizer', 'Amplifier', 'Panner', 'Pitcher', 'Stretcher', 'Reverser', 'Inverter', 'BPM', 'Key', 'Chord', 'Tuner', 'Metronome', 'Synthesizer', 'Sequencer', 'Sampler', 'Player', 'Recorder', 'Editor', 'Visualizer', 'Analyzer', 'Identifier', 'Tagger', 'Renamer', 'Organizer', 'Downloader', 'Uploader', 'Streamer', 'Broadcaster'];
+  for (const t of audioTopics) {
+      for (const a of audioActions) {
+          tools.push({ id: `audio-${t.toLowerCase().replace(' ', '-')}-${a.toLowerCase()}`, name: `${t} ${a}`, category: 'Audio Tools', tags: [t.toLowerCase(), a.toLowerCase(), 'audio', 'sound', 'music'] });
+      }
+  }
+
   // Add the initial active tools to an ignore set so we don't yield duplicated IDs or names
   return tools;
 }
