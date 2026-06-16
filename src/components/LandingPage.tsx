@@ -137,7 +137,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
                   
                   {/* Tag Cloud */}
                   <div className="flex flex-wrap justify-center gap-3 max-w-4xl">
-                     {['Image Tools', 'Video', 'Text', 'PDF Utilities'].map(tag => (
+                     {['Image Tools', 'Developers', 'Text Formatters', 'Security'].map(tag => (
                        <button 
                           key={tag} 
                           onClick={() => setQuery(tag)}
