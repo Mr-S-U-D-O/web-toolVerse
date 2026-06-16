@@ -6,7 +6,7 @@ interface LandingPageProps {
   onNavigate: (toolId: string) => void;
 }
 
-const ACTIVE_TOOLS = [
+export const ACTIVE_TOOLS = [
   { 
     id: 'image-cropper', 
     name: 'Image Cropper', 
@@ -90,6 +90,666 @@ const ACTIVE_TOOLS = [
     name: 'Markdown Preview',
     category: 'Text Formatters',
     tags: ['markdown', 'preview', 'editor', 'text', 'md', 'format', 'render', 'developer']
+  },
+  {
+    id: 'text-string-reverser',
+    name: 'String Reverser',
+    category: 'Text Formatters',
+    tags: ['string', 'reverser', 'text']
+  },
+  {
+    id: 'text-word-counter',
+    name: 'Word Counter',
+    category: 'Text Formatters',
+    tags: ['word', 'counter', 'text', 'character', 'line']
+  },
+  {
+    id: 'text-list-sorter',
+    name: 'List Sorter',
+    category: 'Text Formatters',
+    tags: ['list', 'sorter', 'text', 'alphabetical']
+  },
+  {
+    id: 'dev-css-minifier',
+    name: 'CSS Minifier',
+    category: 'Developers',
+    tags: ['css', 'minifier', 'code', 'compress']
+  },
+  {
+    id: 'dev-javascript-minifier',
+    name: 'JavaScript Minifier',
+    category: 'Developers',
+    tags: ['javascript', 'minifier', 'code', 'compress', 'js']
+  },
+  {
+    id: 'dev-json-minifier',
+    name: 'JSON Minifier',
+    category: 'Developers',
+    tags: ['json', 'minifier', 'code', 'compress']
+  },
+  {
+    id: 'math-percentages-calculator',
+    name: 'Percentages Calculator',
+    category: 'Calculators',
+    tags: ['percentages', 'calculator', 'math']
+  },
+  {
+    id: 'fin-roi-calculator',
+    name: 'ROI Calculator',
+    category: 'Finance',
+    tags: ['roi', 'calculator', 'finance', 'money', 'investment']
+  },
+  {
+    id: 'health-bmi-calculator',
+    name: 'BMI Calculator',
+    category: 'Health & Fitness',
+    tags: ['bmi', 'calculator', 'health', 'fitness', 'weight', 'body']
+  },
+  {
+    id: 'convert-csv-to-json',
+    name: 'CSV to JSON',
+    category: 'Converters',
+    tags: ['csv', 'json', 'convert', 'file', 'data']
+  },
+  {
+    id: 'text-string-generator',
+    name: 'String Generator',
+    category: 'Text Formatters',
+    tags: ['string', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-sentence-generator',
+    name: 'Sentence Generator',
+    category: 'Text Formatters',
+    tags: ['sentence', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-word-generator',
+    name: 'Word Generator',
+    category: 'Text Formatters',
+    tags: ['word', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-character-generator',
+    name: 'Character Generator',
+    category: 'Text Formatters',
+    tags: ['character', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-article-generator',
+    name: 'Article Generator',
+    category: 'Text Formatters',
+    tags: ['article', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-poem-generator',
+    name: 'Poem Generator',
+    category: 'Text Formatters',
+    tags: ['poem', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-lyrics-generator',
+    name: 'Lyrics Generator',
+    category: 'Text Formatters',
+    tags: ['lyrics', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-code-generator',
+    name: 'Code Generator',
+    category: 'Text Formatters',
+    tags: ['code', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-data-generator',
+    name: 'Data Generator',
+    category: 'Text Formatters',
+    tags: ['data', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-list-generator',
+    name: 'List Generator',
+    category: 'Text Formatters',
+    tags: ['list', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-table-generator',
+    name: 'Table Generator',
+    category: 'Text Formatters',
+    tags: ['table', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-matrix-generator',
+    name: 'Matrix Generator',
+    category: 'Text Formatters',
+    tags: ['matrix', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-vector-generator',
+    name: 'Vector Generator',
+    category: 'Text Formatters',
+    tags: ['vector', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-json-generator',
+    name: 'JSON Generator',
+    category: 'Text Formatters',
+    tags: ['json', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-xml-generator',
+    name: 'XML Generator',
+    category: 'Text Formatters',
+    tags: ['xml', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-yaml-generator',
+    name: 'YAML Generator',
+    category: 'Text Formatters',
+    tags: ['yaml', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-csv-generator',
+    name: 'CSV Generator',
+    category: 'Text Formatters',
+    tags: ['csv', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-sql-generator',
+    name: 'SQL Generator',
+    category: 'Text Formatters',
+    tags: ['sql', 'generator', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-string-analyzer',
+    name: 'String Analyzer',
+    category: 'Text Formatters',
+    tags: ['string', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-sentence-analyzer',
+    name: 'Sentence Analyzer',
+    category: 'Text Formatters',
+    tags: ['sentence', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-word-analyzer',
+    name: 'Word Analyzer',
+    category: 'Text Formatters',
+    tags: ['word', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-character-analyzer',
+    name: 'Character Analyzer',
+    category: 'Text Formatters',
+    tags: ['character', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-article-analyzer',
+    name: 'Article Analyzer',
+    category: 'Text Formatters',
+    tags: ['article', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-poem-analyzer',
+    name: 'Poem Analyzer',
+    category: 'Text Formatters',
+    tags: ['poem', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-lyrics-analyzer',
+    name: 'Lyrics Analyzer',
+    category: 'Text Formatters',
+    tags: ['lyrics', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-code-analyzer',
+    name: 'Code Analyzer',
+    category: 'Text Formatters',
+    tags: ['code', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-data-analyzer',
+    name: 'Data Analyzer',
+    category: 'Text Formatters',
+    tags: ['data', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-list-analyzer',
+    name: 'List Analyzer',
+    category: 'Text Formatters',
+    tags: ['list', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-table-analyzer',
+    name: 'Table Analyzer',
+    category: 'Text Formatters',
+    tags: ['table', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-matrix-analyzer',
+    name: 'Matrix Analyzer',
+    category: 'Text Formatters',
+    tags: ['matrix', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-vector-analyzer',
+    name: 'Vector Analyzer',
+    category: 'Text Formatters',
+    tags: ['vector', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-json-analyzer',
+    name: 'JSON Analyzer',
+    category: 'Text Formatters',
+    tags: ['json', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-xml-analyzer',
+    name: 'XML Analyzer',
+    category: 'Text Formatters',
+    tags: ['xml', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-yaml-analyzer',
+    name: 'YAML Analyzer',
+    category: 'Text Formatters',
+    tags: ['yaml', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-csv-analyzer',
+    name: 'CSV Analyzer',
+    category: 'Text Formatters',
+    tags: ['csv', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-sql-analyzer',
+    name: 'SQL Analyzer',
+    category: 'Text Formatters',
+    tags: ['sql', 'analyzer', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-string-reverser',
+    name: 'String Reverser',
+    category: 'Text Formatters',
+    tags: ['string', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-sentence-reverser',
+    name: 'Sentence Reverser',
+    category: 'Text Formatters',
+    tags: ['sentence', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-word-reverser',
+    name: 'Word Reverser',
+    category: 'Text Formatters',
+    tags: ['word', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-character-reverser',
+    name: 'Character Reverser',
+    category: 'Text Formatters',
+    tags: ['character', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-article-reverser',
+    name: 'Article Reverser',
+    category: 'Text Formatters',
+    tags: ['article', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-poem-reverser',
+    name: 'Poem Reverser',
+    category: 'Text Formatters',
+    tags: ['poem', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-lyrics-reverser',
+    name: 'Lyrics Reverser',
+    category: 'Text Formatters',
+    tags: ['lyrics', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-code-reverser',
+    name: 'Code Reverser',
+    category: 'Text Formatters',
+    tags: ['code', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-data-reverser',
+    name: 'Data Reverser',
+    category: 'Text Formatters',
+    tags: ['data', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-list-reverser',
+    name: 'List Reverser',
+    category: 'Text Formatters',
+    tags: ['list', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-table-reverser',
+    name: 'Table Reverser',
+    category: 'Text Formatters',
+    tags: ['table', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-matrix-reverser',
+    name: 'Matrix Reverser',
+    category: 'Text Formatters',
+    tags: ['matrix', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-vector-reverser',
+    name: 'Vector Reverser',
+    category: 'Text Formatters',
+    tags: ['vector', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-json-reverser',
+    name: 'JSON Reverser',
+    category: 'Text Formatters',
+    tags: ['json', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-xml-reverser',
+    name: 'XML Reverser',
+    category: 'Text Formatters',
+    tags: ['xml', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-yaml-reverser',
+    name: 'YAML Reverser',
+    category: 'Text Formatters',
+    tags: ['yaml', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-csv-reverser',
+    name: 'CSV Reverser',
+    category: 'Text Formatters',
+    tags: ['csv', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-sql-reverser',
+    name: 'SQL Reverser',
+    category: 'Text Formatters',
+    tags: ['sql', 'reverser', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-string-sorter',
+    name: 'String Sorter',
+    category: 'Text Formatters',
+    tags: ['string', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-sentence-sorter',
+    name: 'Sentence Sorter',
+    category: 'Text Formatters',
+    tags: ['sentence', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-word-sorter',
+    name: 'Word Sorter',
+    category: 'Text Formatters',
+    tags: ['word', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-character-sorter',
+    name: 'Character Sorter',
+    category: 'Text Formatters',
+    tags: ['character', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-article-sorter',
+    name: 'Article Sorter',
+    category: 'Text Formatters',
+    tags: ['article', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-poem-sorter',
+    name: 'Poem Sorter',
+    category: 'Text Formatters',
+    tags: ['poem', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-lyrics-sorter',
+    name: 'Lyrics Sorter',
+    category: 'Text Formatters',
+    tags: ['lyrics', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-code-sorter',
+    name: 'Code Sorter',
+    category: 'Text Formatters',
+    tags: ['code', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-data-sorter',
+    name: 'Data Sorter',
+    category: 'Text Formatters',
+    tags: ['data', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-list-sorter',
+    name: 'List Sorter',
+    category: 'Text Formatters',
+    tags: ['list', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-table-sorter',
+    name: 'Table Sorter',
+    category: 'Text Formatters',
+    tags: ['table', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-matrix-sorter',
+    name: 'Matrix Sorter',
+    category: 'Text Formatters',
+    tags: ['matrix', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-vector-sorter',
+    name: 'Vector Sorter',
+    category: 'Text Formatters',
+    tags: ['vector', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-json-sorter',
+    name: 'JSON Sorter',
+    category: 'Text Formatters',
+    tags: ['json', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-xml-sorter',
+    name: 'XML Sorter',
+    category: 'Text Formatters',
+    tags: ['xml', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-yaml-sorter',
+    name: 'YAML Sorter',
+    category: 'Text Formatters',
+    tags: ['yaml', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-csv-sorter',
+    name: 'CSV Sorter',
+    category: 'Text Formatters',
+    tags: ['csv', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-sql-sorter',
+    name: 'SQL Sorter',
+    category: 'Text Formatters',
+    tags: ['sql', 'sorter', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-string-decoder',
+    name: 'String Decoder',
+    category: 'Text Formatters',
+    tags: ['string', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-sentence-decoder',
+    name: 'Sentence Decoder',
+    category: 'Text Formatters',
+    tags: ['sentence', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-word-decoder',
+    name: 'Word Decoder',
+    category: 'Text Formatters',
+    tags: ['word', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-character-decoder',
+    name: 'Character Decoder',
+    category: 'Text Formatters',
+    tags: ['character', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-article-decoder',
+    name: 'Article Decoder',
+    category: 'Text Formatters',
+    tags: ['article', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-poem-decoder',
+    name: 'Poem Decoder',
+    category: 'Text Formatters',
+    tags: ['poem', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-lyrics-decoder',
+    name: 'Lyrics Decoder',
+    category: 'Text Formatters',
+    tags: ['lyrics', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-code-decoder',
+    name: 'Code Decoder',
+    category: 'Text Formatters',
+    tags: ['code', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-data-decoder',
+    name: 'Data Decoder',
+    category: 'Text Formatters',
+    tags: ['data', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-list-decoder',
+    name: 'List Decoder',
+    category: 'Text Formatters',
+    tags: ['list', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-table-decoder',
+    name: 'Table Decoder',
+    category: 'Text Formatters',
+    tags: ['table', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-matrix-decoder',
+    name: 'Matrix Decoder',
+    category: 'Text Formatters',
+    tags: ['matrix', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-vector-decoder',
+    name: 'Vector Decoder',
+    category: 'Text Formatters',
+    tags: ['vector', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-json-decoder',
+    name: 'JSON Decoder',
+    category: 'Text Formatters',
+    tags: ['json', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-xml-decoder',
+    name: 'XML Decoder',
+    category: 'Text Formatters',
+    tags: ['xml', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-yaml-decoder',
+    name: 'YAML Decoder',
+    category: 'Text Formatters',
+    tags: ['yaml', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-csv-decoder',
+    name: 'CSV Decoder',
+    category: 'Text Formatters',
+    tags: ['csv', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-sql-decoder',
+    name: 'SQL Decoder',
+    category: 'Text Formatters',
+    tags: ['sql', 'decoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-string-encoder',
+    name: 'String Encoder',
+    category: 'Text Formatters',
+    tags: ['string', 'encoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-sentence-encoder',
+    name: 'Sentence Encoder',
+    category: 'Text Formatters',
+    tags: ['sentence', 'encoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-word-encoder',
+    name: 'Word Encoder',
+    category: 'Text Formatters',
+    tags: ['word', 'encoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-character-encoder',
+    name: 'Character Encoder',
+    category: 'Text Formatters',
+    tags: ['character', 'encoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-article-encoder',
+    name: 'Article Encoder',
+    category: 'Text Formatters',
+    tags: ['article', 'encoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-poem-encoder',
+    name: 'Poem Encoder',
+    category: 'Text Formatters',
+    tags: ['poem', 'encoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-lyrics-encoder',
+    name: 'Lyrics Encoder',
+    category: 'Text Formatters',
+    tags: ['lyrics', 'encoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-code-encoder',
+    name: 'Code Encoder',
+    category: 'Text Formatters',
+    tags: ['code', 'encoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-data-encoder',
+    name: 'Data Encoder',
+    category: 'Text Formatters',
+    tags: ['data', 'encoder', 'text', 'string', 'words']
+  },
+  {
+    id: 'text-list-encoder',
+    name: 'List Encoder',
+    category: 'Text Formatters',
+    tags: ['list', 'encoder', 'text', 'string', 'words']
   }
 ];
 

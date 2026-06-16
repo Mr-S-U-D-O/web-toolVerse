@@ -12,6 +12,18 @@ import UrlEncoderTool from './components/UrlEncoderTool';
 import QrCodeGeneratorTool from './components/QrCodeGeneratorTool';
 import HashGeneratorTool from './components/HashGeneratorTool';
 import MarkdownPreviewTool from './components/MarkdownPreviewTool';
+import StringReverserTool from './components/StringReverserTool';
+import WordCounterTool from './components/WordCounterTool';
+import ListSorterTool from './components/ListSorterTool';
+import CssMinifierTool from './components/CssMinifierTool';
+import JsonMinifierTool from './components/JsonMinifierTool';
+import JavaScriptMinifierTool from './components/JavaScriptMinifierTool';
+import PercentagesCalculatorTool from './components/PercentagesCalculatorTool';
+import RoiCalculatorTool from './components/RoiCalculatorTool';
+import BmiCalculatorTool from './components/BmiCalculatorTool';
+import CsvToJsonTool from './components/CsvToJsonTool';
+import AnyTextTool from './components/AnyTextTool';
+import { ACTIVE_TOOLS } from './components/LandingPage';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<'landing' | string>('landing');
@@ -70,8 +82,60 @@ export default function App() {
         <MarkdownPreviewTool onBack={() => setCurrentView('landing')} />
       )}
 
+      {currentView === 'text-string-reverser' && (
+        <StringReverserTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'text-word-counter' && (
+        <WordCounterTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'text-list-sorter' && (
+        <ListSorterTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'dev-css-minifier' && (
+        <CssMinifierTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'dev-json-minifier' && (
+        <JsonMinifierTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'dev-javascript-minifier' && (
+        <JavaScriptMinifierTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'math-percentages-calculator' && (
+        <PercentagesCalculatorTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'fin-roi-calculator' && (
+        <RoiCalculatorTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'health-bmi-calculator' && (
+        <BmiCalculatorTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {currentView === 'convert-csv-to-json' && (
+        <CsvToJsonTool onBack={() => setCurrentView('landing')} />
+      )}
+
+      {/* Generic Text tools render */}
+      {currentView.startsWith('text-') && !['text-string-reverser', 'text-word-counter', 'text-list-sorter'].includes(currentView) && (() => {
+         const match = currentView.match(/^text-(.+)-(.+)$/);
+         if (match) {
+            const selectedTool = ACTIVE_TOOLS.find(t => t.id === currentView);
+            if (selectedTool) {
+              return <AnyTextTool onBack={() => setCurrentView('landing')} title={selectedTool.name} action={match[2]} type={match[1]} />
+            }
+         }
+         return null;
+      })()}
+
       {/* Fallback for tools we haven't implemented yet */}
-      {currentView !== 'landing' && 
+      {!currentView.startsWith('text-') && currentView !== 'landing' && 
        currentView !== 'image-cropper' && 
        currentView !== 'image-compressor' && 
        currentView !== 'image-resizer' && 
@@ -83,7 +147,17 @@ export default function App() {
        currentView !== 'url-encoder' && 
        currentView !== 'qrcode-generator' && 
        currentView !== 'hash-generator' && 
-       currentView !== 'markdown-preview' && (
+       currentView !== 'markdown-preview' && 
+       currentView !== 'text-string-reverser' && 
+       currentView !== 'text-word-counter' && 
+       currentView !== 'text-list-sorter' && 
+       currentView !== 'dev-css-minifier' && 
+       currentView !== 'dev-json-minifier' && 
+       currentView !== 'dev-javascript-minifier' && 
+       currentView !== 'math-percentages-calculator' && 
+       currentView !== 'fin-roi-calculator' && 
+       currentView !== 'health-bmi-calculator' && 
+       currentView !== 'convert-csv-to-json' && (
         <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center">
           <h2 className="text-2xl font-bold mb-4 font-heading text-primary">Coming Soon</h2>
           <p className="text-on-surface-variant mb-8 max-w-md">
