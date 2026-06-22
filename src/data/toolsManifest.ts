@@ -17,4 +17,13 @@ export const ALL_TOOLS: Tool[] = [
     icon: null,
     status: 'active',
   },
+  {
+    id: 'pdf-studio',
+    name: 'PDF Studio',
+    description:
+      'Merge, split, reorder, rotate and encrypt PDFs in one workflow. No uploads. 100% client-side.',
+    category: 'PDF',
+    icon: null,
+    status: 'active',
+  },
 ];

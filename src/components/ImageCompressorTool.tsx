@@ -938,16 +938,7 @@ export default function ImageCompressorTool({ onBack }: ImageCompressorToolProps
           </div>
         </div>
 
-        {/* ── Bottom Back Button ────────────────────────────────────── */}
-        <div className="mt-16 pt-8 border-t border-outline-variant flex justify-center">
-          <button
-            onClick={onBack}
-            className="group flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-            <span className="font-mono text-[11px] uppercase tracking-widest">Back to web-toolVerse</span>
-          </button>
-        </div>
+
       </main>
 
       {/* ── Before/After Modal ────────────────────────────────────────── */}

@@ -99,6 +99,17 @@ function DynamicToolRoute() {
     }>
       <LazyComponent onBack={() => navigate('/')} />
       <RelatedTools currentToolId={toolId} onNavigate={(id) => navigate(`/tools/${id}`)} />
+      
+      {/* ── Bottom Back Button ────────────────────────────────────────────── */}
+      <div className="w-full bg-surface pb-12 flex justify-center border-t border-outline-variant pt-8 mt-auto">
+        <button
+          onClick={() => navigate('/')}
+          className="group flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+          <span className="font-mono text-[11px] uppercase tracking-widest">Back to web-toolVerse</span>
+        </button>
+      </div>
     </Suspense>
   );
 }
