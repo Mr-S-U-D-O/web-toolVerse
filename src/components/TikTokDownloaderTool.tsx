@@ -8,7 +8,7 @@ const REDIRECTS = [
   { pattern: /instagram\.com/i, toolPath: '/tools/instagram-downloader', toolName: 'Instagram' },
 ];
 
-export default function TikTokDownloaderTool({ onBack }: { onBack?: () => void }) {
+export default function TiktokDownloaderTool({ onBack }: { onBack?: () => void }) {
   return (
     <BaseSocialExtractor
       platformName="TikTok"

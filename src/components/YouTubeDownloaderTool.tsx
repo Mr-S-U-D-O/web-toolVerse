@@ -8,7 +8,7 @@ const REDIRECTS = [
   { pattern: /instagram\.com/i, toolPath: '/tools/instagram-downloader', toolName: 'Instagram' },
 ];
 
-export default function YouTubeDownloaderTool({ onBack }: { onBack?: () => void }) {
+export default function YoutubeDownloaderTool({ onBack }: { onBack?: () => void }) {
   return (
     <BaseSocialExtractor
       platformName="YouTube"
