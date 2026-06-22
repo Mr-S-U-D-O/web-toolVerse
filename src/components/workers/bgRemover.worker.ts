@@ -1,14 +1,11 @@
 /**
  * bgRemover.worker.ts
  *
- * Isolated Web Worker for AI background removal.
- * Runs entirely off the main thread — zero UI jank.
+ * Isolated Web Worker for AI background removal using briaai/RMBG-1.4.
  *
- * Architecture:
- *  1. On 'init': download + cache briaai/RMBG-1.4 (quantized ONNX ~45 MB)
- *     via @huggingface/transformers with WebGPU → WASM fallback.
- *  2. On 'process': run segmentation inference, composite the alpha mask
- *     onto the original image using OffscreenCanvas, return a full-res PNG blob.
+ * IMPORTANT: RMBG-1.4 is a SegformerForSemanticSegmentation model and is NOT
+ * compatible with pipeline('image-segmentation'). We must load it directly
+ * via AutoModel + AutoProcessor to bypass pipeline task validation.
  *
  * Message Protocol
  * ─────────────────
@@ -25,40 +22,38 @@
  */
 
 import {
-  pipeline,
-  env,
+  AutoModel,
+  AutoProcessor,
   RawImage,
+  env,
 } from '@huggingface/transformers';
 
 // ─── Transformers.js environment config ───────────────────────────────────────
 
-// Always prefer cached weights; do not re-download if already cached.
 env.useBrowserCache = true;
-// Allow remote model download on first use.
 env.allowRemoteModels = true;
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-type Segmenter = Awaited<ReturnType<typeof pipeline>>;
 
 // ─── State ────────────────────────────────────────────────────────────────────
 
-let segmenter: Segmenter | null = null;
+let model: Awaited<ReturnType<typeof AutoModel.from_pretrained>> | null = null;
+let processor: Awaited<ReturnType<typeof AutoProcessor.from_pretrained>> | null = null;
 let activeDevice = 'wasm';
 
 // ─── Progress callback ────────────────────────────────────────────────────────
 
-/**
- * Called by transformers.js during model download.
- * Maps the raw progress event to a 0–100 value for the UI progress bar.
- */
-function onModelProgress(event: { status: string; name?: string; file?: string; progress?: number; loaded?: number; total?: number }) {
+function onDownloadProgress(event: {
+  status: string;
+  progress?: number;
+  loaded?: number;
+  total?: number;
+}) {
   if (event.status === 'downloading' || event.status === 'progress') {
-    const pct = event.progress != null
-      ? Math.round(event.progress)
-      : event.loaded != null && event.total != null && event.total > 0
-        ? Math.round((event.loaded / event.total) * 100)
-        : 0;
+    const pct =
+      event.progress != null
+        ? Math.round(event.progress)
+        : event.loaded != null && event.total != null && event.total > 0
+          ? Math.round((event.loaded / event.total) * 100)
+          : 0;
 
     self.postMessage({
       type: 'progress',
@@ -79,51 +74,71 @@ function onModelProgress(event: { status: string; name?: string; file?: string; 
 // ─── Init ─────────────────────────────────────────────────────────────────────
 
 async function init() {
-  if (segmenter) {
+  if (model && processor) {
     self.postMessage({ type: 'ready', device: activeDevice });
     return;
   }
 
   try {
-    // Try WebGPU first for GPU-accelerated inference.
-    // transformers.js v3 auto-falls back to WASM if WebGPU unavailable.
-    let pipe: Segmenter;
+    self.postMessage({
+      type: 'progress',
+      stage: 'download',
+      value: 0,
+      text: 'Initialising AI model…',
+    });
 
-    const deviceHint = 'webgpu';
+    // ── Model ──────────────────────────────────────────────────────────────
+    // We use AutoModel directly because RMBG-1.4 is SegformerForSemanticSegmentation
+    // and is unsupported by pipeline('image-segmentation') in transformers.js.
+    // Setting model_type:'custom' bypasses task-class validation and loads the
+    // ONNX graph directly.
+    let loadedModel: typeof model;
+    let loadedDevice = 'wasm';
 
     try {
-      pipe = await pipeline(
-        'image-segmentation',
-        'briaai/RMBG-1.4',
-        {
-          device: deviceHint,
-          dtype: 'fp32',                        // RMBG-1.4 requires fp32
-          progress_callback: onModelProgress,
-        } as any,
-      );
-      activeDevice = 'webgpu';
+      loadedModel = await AutoModel.from_pretrained('briaai/RMBG-1.4', {
+        config: { model_type: 'custom' },
+        device: 'webgpu',
+        progress_callback: onDownloadProgress,
+      } as any);
+      loadedDevice = 'webgpu';
     } catch {
-      // WebGPU failed — fall back to WASM (CPU)
+      // WebGPU not available — fall back to WASM (CPU)
       self.postMessage({
         type: 'progress',
         stage: 'download',
         value: 0,
-        text: 'WebGPU unavailable — loading CPU (WASM) backend…',
+        text: 'WebGPU unavailable — using CPU backend…',
       });
-
-      pipe = await pipeline(
-        'image-segmentation',
-        'briaai/RMBG-1.4',
-        {
-          device: 'wasm',
-          dtype: 'fp32',
-          progress_callback: onModelProgress,
-        } as any,
-      );
-      activeDevice = 'wasm';
+      loadedModel = await AutoModel.from_pretrained('briaai/RMBG-1.4', {
+        config: { model_type: 'custom' },
+        device: 'wasm',
+        progress_callback: onDownloadProgress,
+      } as any);
+      loadedDevice = 'wasm';
     }
 
-    segmenter = pipe;
+    // ── Processor ──────────────────────────────────────────────────────────
+    // RMBG-1.4's preprocessor_config.json may not be present; supply defaults.
+    const loadedProcessor = await AutoProcessor.from_pretrained('briaai/RMBG-1.4', {
+      config: {
+        do_normalize: true,
+        do_pad: false,
+        do_rescale: true,
+        do_resize: true,
+        image_mean: [0.5, 0.5, 0.5],
+        feature_extractor_type: 'ImageFeatureExtractor',
+        image_std: [1, 1, 1],
+        resample: 2,
+        rescale_factor: 0.00392156862745098, // 1/255
+        size: { width: 1024, height: 1024 },
+      },
+    } as any);
+
+    model = loadedModel;
+    processor = loadedProcessor;
+    activeDevice = loadedDevice;
+
     self.postMessage({ type: 'ready', device: activeDevice });
   } catch (err) {
     const msg = err instanceof Error ? err.message : 'Failed to load AI model';
@@ -134,130 +149,76 @@ async function init() {
 // ─── Process ──────────────────────────────────────────────────────────────────
 
 /**
- * Core inference + compositing function.
+ * Inference + high-resolution compositing.
  *
- * Strategy:
- *  1. Convert ImageBitmap → RawImage for the model (library handles resize internally)
- *  2. Run segmentation pipeline → get alpha mask (1024×1024 RawImage, grayscale)
- *  3. Composite the mask onto the original image using OffscreenCanvas:
- *       - Draw original at full resolution
- *       - Iterate every pixel; look up mask value using nearest-neighbor:
- *           maskX = floor(px / origW * maskW)
- *           maskY = floor(py / origH * maskH)
- *       - Set pixel alpha to mask value
- *  4. Export canvas as a full-resolution transparent PNG blob
+ *  1. Create RawImage from the ImageBitmap (already on worker via transfer)
+ *  2. Pre-process: processor resizes to 1024×1024, normalises pixel values
+ *  3. Run model: output tensor [1, 1, 1024, 1024] (sigmoid alpha, 0–1)
+ *  4. Convert output[0] to a grayscale RawImage and resize to original dimensions
+ *  5. Draw original image on OffscreenCanvas (full resolution)
+ *  6. Apply mask as alpha channel: pixel-by-pixel from the resized mask
+ *  7. Export full-resolution transparent PNG
  */
 async function processImage(id: string, bitmap: ImageBitmap) {
-  if (!segmenter) {
+  if (!model || !processor) {
     self.postMessage({ type: 'error', id, message: 'Model not loaded yet.' });
     return;
   }
 
   try {
-    // ── Step 1: Convert bitmap to RawImage ────────────────────────────────
-    self.postMessage({
-      type: 'progress',
-      stage: 'inference',
-      value: 10,
-      text: 'Preparing image…',
-    });
-
-    // Draw to a small OffscreenCanvas to get pixel data for RawImage
-    const srcCanvas = new OffscreenCanvas(bitmap.width, bitmap.height);
-    const srcCtx = srcCanvas.getContext('2d')!;
-    srcCtx.drawImage(bitmap, 0, 0);
-    const srcData = srcCtx.getImageData(0, 0, bitmap.width, bitmap.height);
-
-    // Build a RawImage from RGBA pixel data
-    const rawInput = new RawImage(
-      srcData.data,
-      bitmap.width,
-      bitmap.height,
-      4, // RGBA channels
-    );
-
-    // ── Step 2: Run inference ─────────────────────────────────────────────
-    self.postMessage({
-      type: 'progress',
-      stage: 'inference',
-      value: 30,
-      text: 'Running AI background removal…',
-    });
-
-    // The pipeline returns an array of segmentation results;
-    // RMBG-1.4 returns a single result with a 'mask' RawImage.
-    const results = await (segmenter as any)(rawInput) as Array<{ label: string; score: number; mask: RawImage }>;
-
-    self.postMessage({
-      type: 'progress',
-      stage: 'inference',
-      value: 75,
-      text: 'Applying mask at full resolution…',
-    });
-
-    if (!results || results.length === 0 || !results[0].mask) {
-      throw new Error('Model returned no segmentation mask.');
-    }
-
-    const mask = results[0].mask; // RawImage: width=1024, height=1024, channels=1
-
-    // ── Step 3: Composite on OffscreenCanvas ──────────────────────────────
     const origW = bitmap.width;
     const origH = bitmap.height;
-    const maskW = mask.width;
-    const maskH = mask.height;
 
+    // ── Step 1: Build RawImage from bitmap ────────────────────────────────
+    self.postMessage({ type: 'progress', stage: 'inference', value: 10, text: 'Decoding image…' });
+
+    const srcCanvas = new OffscreenCanvas(origW, origH);
+    const srcCtx = srcCanvas.getContext('2d')!;
+    srcCtx.drawImage(bitmap, 0, 0);
+    const srcData = srcCtx.getImageData(0, 0, origW, origH);
+    const rawImage = new RawImage(srcData.data, origW, origH, 4);
+
+    // ── Step 2: Preprocess (resize to 1024×1024, normalise) ───────────────
+    self.postMessage({ type: 'progress', stage: 'inference', value: 25, text: 'Preprocessing…' });
+    const { pixel_values } = await (processor as any)(rawImage);
+
+    // ── Step 3: Run inference ─────────────────────────────────────────────
+    self.postMessage({ type: 'progress', stage: 'inference', value: 40, text: 'Running AI inference…' });
+    const { output } = await (model as any)({ input: pixel_values });
+
+    // ── Step 4: Build resized alpha mask ──────────────────────────────────
+    self.postMessage({ type: 'progress', stage: 'inference', value: 75, text: 'Applying mask at full resolution…' });
+
+    // output.dims = [1, 1, 1024, 1024]; output[0] gives [1, 1024, 1024]
+    // Multiply by 255 to go from [0,1] float to [0,255] uint8
+    const maskImg = await RawImage.fromTensor(
+      (output[0] as any).mul(255).to('uint8'),
+    );
+    // Resize mask to original image dimensions (nearest-neighbor effectively)
+    const resizedMask = await maskImg.resize(origW, origH);
+
+    // ── Step 5 & 6: Draw original + apply alpha mask ──────────────────────
     const outCanvas = new OffscreenCanvas(origW, origH);
     const outCtx = outCanvas.getContext('2d')!;
-
-    // Draw original image at full resolution
     outCtx.drawImage(bitmap, 0, 0);
 
-    // Retrieve pixel data to manipulate alpha channel
     const imageData = outCtx.getImageData(0, 0, origW, origH);
-    const data = imageData.data; // Uint8ClampedArray [R,G,B,A, R,G,B,A, ...]
-    const maskData = mask.data as Uint8Array | Float32Array;
+    const pixels = imageData.data; // RGBA, length = origW * origH * 4
+    const maskData = resizedMask.data; // Uint8Array, length = origW * origH (1 channel)
 
-    for (let py = 0; py < origH; py++) {
-      for (let px = 0; px < origW; px++) {
-        // Nearest-neighbor lookup into the 1024×1024 mask
-        const maskX = Math.floor((px / origW) * maskW);
-        const maskY = Math.floor((py / origH) * maskH);
-        const maskIdx = maskY * maskW + maskX;
-
-        // Mask data may be Uint8 (0–255) or Float32 (0.0–1.0)
-        let alphaValue: number;
-        if (maskData instanceof Float32Array) {
-          alphaValue = Math.round(maskData[maskIdx] * 255);
-        } else {
-          alphaValue = maskData[maskIdx];
-        }
-
-        // Set alpha in RGBA buffer (index of alpha byte = pixel*4 + 3)
-        data[(py * origW + px) * 4 + 3] = alphaValue;
-      }
+    for (let i = 0; i < maskData.length; i++) {
+      pixels[i * 4 + 3] = maskData[i]; // write alpha channel
     }
 
     outCtx.putImageData(imageData, 0, 0);
 
-    // ── Step 4: Export PNG blob ───────────────────────────────────────────
-    self.postMessage({
-      type: 'progress',
-      stage: 'inference',
-      value: 95,
-      text: 'Encoding PNG…',
-    });
+    // ── Step 7: Export PNG ────────────────────────────────────────────────
+    self.postMessage({ type: 'progress', stage: 'inference', value: 95, text: 'Encoding PNG…' });
 
     const blob = await outCanvas.convertToBlob({ type: 'image/png' });
-
-    // Clean up the source bitmap — caller is responsible for closing it
     bitmap.close();
 
-    self.postMessage({
-      type: 'result',
-      id,
-      blob,
-    });
+    self.postMessage({ type: 'result', id, blob });
   } catch (err) {
     const msg = err instanceof Error ? err.message : 'Inference failed';
     self.postMessage({ type: 'error', id, message: msg });
@@ -268,7 +229,6 @@ async function processImage(id: string, bitmap: ImageBitmap) {
 
 self.onmessage = async (event: MessageEvent) => {
   const msg = event.data;
-
   switch (msg.type) {
     case 'init':
       await init();
