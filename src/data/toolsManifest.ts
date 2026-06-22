@@ -35,4 +35,13 @@ export const ALL_TOOLS: Tool[] = [
     icon: null,
     status: 'active',
   },
+  {
+    id: 'image-converter',
+    name: 'Image Converter',
+    description:
+      'Convert JPG, PNG, WebP, and HEIC offline. Instant native canvas processing, no server uploads.',
+    category: 'Image',
+    icon: null,
+    status: 'active',
+  },
 ];
