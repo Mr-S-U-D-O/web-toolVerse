@@ -16,7 +16,7 @@ export default function Base64EncodeTool({ onBack }: { onBack?: () => void }) {
   const [activeTab, setActiveTab] = useState<'text' | 'file'>('text');
   
   // Text Mode State
-  const [inputText, setInputText] = useState('Hello, Web-ToolVerse! 🚀');
+  const [inputText, setInputText] = useState('Hello, Tool Cabinet! 🚀');
   const [outputText, setOutputText] = useState('');
   const [copiedText, setCopiedText] = useState(false);
   
@@ -136,7 +136,7 @@ export default function Base64EncodeTool({ onBack }: { onBack?: () => void }) {
             className="group flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-            <span className="font-mono text-[11px] uppercase tracking-widest">web-toolVerse</span>
+            <span className="font-mono text-[11px] uppercase tracking-widest">Tool Cabinet</span>
           </button>
 
           <div className="flex items-center gap-4">

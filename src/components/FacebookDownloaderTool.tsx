@@ -3,9 +3,9 @@ import { Facebook } from 'lucide-react';
 import BaseSocialExtractor from './BaseSocialExtractor';
 
 const REDIRECTS = [
-  { pattern: /youtube\.com|youtu\.be/i, toolPath: '/tools/youtube-downloader', toolName: 'YouTube' },
-  { pattern: /tiktok\.com/i, toolPath: '/tools/tiktok-downloader', toolName: 'TikTok' },
-  { pattern: /instagram\.com/i, toolPath: '/tools/instagram-downloader', toolName: 'Instagram' },
+  { pattern: /youtube\.com|youtu\.be/i, toolPath: '/youtube-downloader', toolName: 'YouTube' },
+  { pattern: /tiktok\.com/i, toolPath: '/tiktok-downloader', toolName: 'TikTok' },
+  { pattern: /instagram\.com/i, toolPath: '/instagram-downloader', toolName: 'Instagram' },
 ];
 
 export default function FacebookDownloaderTool({ onBack }: { onBack?: () => void }) {

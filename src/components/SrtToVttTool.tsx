@@ -36,7 +36,7 @@ function convertSrtToVtt(srtText: string): string {
 export default function SrtToVttTool({ onBack }: { onBack?: () => void }) {
   const [inputText, setInputText] = useState(`1
 00:00:01,000 --> 00:00:04,500
-Hello, welcome to Web-ToolVerse!
+Hello, welcome to Tool Cabinet!
 
 2
 00:00:05,200 --> 00:00:08,000
@@ -122,7 +122,7 @@ Enjoy our 100% client-side converters.`);
             className="group flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-            <span className="font-mono text-[11px] uppercase tracking-widest">web-toolVerse</span>
+            <span className="font-mono text-[11px] uppercase tracking-widest">Tool Cabinet</span>
           </button>
 
           <div className="flex items-center gap-4">

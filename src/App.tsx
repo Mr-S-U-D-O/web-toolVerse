@@ -1,10 +1,12 @@
 /// <reference types="vite/client" />
-import React, { Suspense, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useParams, useNavigate, useLocation } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { BrowserRouter, Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import RelatedTools from './components/RelatedTools';
 import { ArrowLeft } from 'lucide-react';
 import { ALL_TOOLS } from './data/toolsManifest';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { getSeoData } from './data/toolsSeoData';
 
 // Dynamically load the rest so we don't break the app, but we manually map the examples.
 const toolModules = import.meta.glob('./components/**/*Tool.tsx');
@@ -18,41 +20,19 @@ Object.entries(toolModules).forEach(([path, importFn]) => {
 });
 
 function getClassName(id: string) {
-  return id.replace(/[^a-zA-Z0-9]/g, '-').split('-').filter(Boolean).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('') + 'Tool';
-}
-
-function useSEO(toolId?: string) {
-  useEffect(() => {
-    if (!toolId) {
-      document.title = "Web-ToolVerse | Every Free Tool You Could Ever Need";
-      let meta = document.querySelector('meta[name="description"]');
-      if (meta) {
-        meta.setAttribute("content", "A comprehensive collection of free web tools.");
-      }
-      return;
-    }
-
-    const tool = ALL_TOOLS.find(t => t.id === toolId);
-    if (tool) {
-      document.title = `${tool.name} | Web-ToolVerse`;
-      let meta = document.querySelector('meta[name="description"]');
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.setAttribute('name', 'description');
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute("content", tool.description || `Free online ${tool.name} tool.`);
-    } else {
-      document.title = "Tool Not Found | Web-ToolVerse";
-    }
-  }, [toolId]);
+  // Alias reverse-dictionary to DictionaryTool
+  const targetId = id === 'reverse-dictionary' ? 'dictionary' : id;
+  return targetId.replace(/[^a-zA-Z0-9]/g, '-').split('-').filter(Boolean).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('') + 'Tool';
 }
 
 function NotFoundState({ toolId }: { toolId?: string }) {
   const navigate = useNavigate();
-  useSEO(toolId); // Call here for 404 title
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center bg-background text-on-surface w-full animate-in fade-in zoom-in duration-300">
+      <Helmet>
+        <title>Tool Not Found | Tool Cabinet</title>
+        <meta name="description" content="The requested tool could not be found on Tool Cabinet." />
+      </Helmet>
       <div className="max-w-md flex flex-col items-center">
         <div className="w-16 h-16 rounded-2xl bg-[#008cff]/10 text-[#008cff] flex items-center justify-center mb-6 border border-[#008cff]/20">
           <span className="font-heading text-2xl font-bold">404</span>
@@ -76,17 +56,24 @@ function NotFoundState({ toolId }: { toolId?: string }) {
 function DynamicToolRoute() {
   const { toolId } = useParams();
   const navigate = useNavigate();
-  
-  useSEO(toolId);
 
   if (!toolId) return <NotFoundState />;
   
+  // Find tool in manifest (support reverse-dictionary alias)
+  const tool = ALL_TOOLS.find(t => t.id === toolId || (toolId === 'reverse-dictionary' && t.id === 'dictionary'));
+
+  if (!tool) {
+    return <NotFoundState toolId={toolId} />;
+  }
+
   const className = getClassName(toolId);
   const LazyComponent = lazyTools[className];
 
   if (!LazyComponent) {
     return <NotFoundState toolId={toolId} />;
   }
+
+  const seo = getSeoData(toolId, tool.name, tool.description);
 
   return (
     <Suspense fallback={
@@ -97,8 +84,47 @@ function DynamicToolRoute() {
         </div>
       </div>
     }>
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <script type="application/ld+json">
+          {JSON.stringify(seo.schema)}
+        </script>
+      </Helmet>
+
       <LazyComponent onBack={() => navigate('/')} />
-      <RelatedTools currentToolId={toolId} onNavigate={(id) => navigate(`/tools/${id}`)} />
+      
+      {/* ── SEO FAQ Section (Bottom Text Strategy) ────────────────────────── */}
+      <section className="w-full bg-surface py-12 lg:py-20 border-t border-outline-variant">
+        <div className="max-w-[1280px] mx-auto px-6">
+          <div className="max-w-3xl">
+            <h2 className="font-heading text-2xl font-bold tracking-tight mb-2 text-[#008cff]">
+              How it Works & FAQ
+            </h2>
+            <p className="text-on-surface-variant font-sans text-sm mb-10 leading-relaxed">
+              Learn more about our secure, 100% offline client-side tools and how they protect your data privacy.
+            </p>
+            <div className="flex flex-col gap-6">
+              {seo.faq.map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="p-6 border border-outline-variant rounded-xl bg-surface-container-low/50 hover:border-[#008cff]/30 transition-colors"
+                >
+                  <h3 className="font-heading font-semibold text-lg mb-2 flex items-start gap-3">
+                    <span className="text-[#008cff] font-mono text-sm leading-6">Q{idx + 1}.</span>
+                    <span className="text-on-surface">{item.question}</span>
+                  </h3>
+                  <p className="text-on-surface-variant font-sans text-sm leading-relaxed pl-8">
+                    {item.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <RelatedTools currentToolId={tool.id} onNavigate={(id) => navigate(`/${id}`)} />
       
       {/* ── Bottom Back Button ────────────────────────────────────────────── */}
       <div className="w-full bg-surface pb-12 flex justify-center border-t border-outline-variant pt-8 mt-auto">
@@ -107,7 +133,7 @@ function DynamicToolRoute() {
           className="group flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-          <span className="font-mono text-[11px] uppercase tracking-widest">Back to web-toolVerse</span>
+          <span className="font-mono text-[11px] uppercase tracking-widest">Back to Tool Cabinet</span>
         </button>
       </div>
     </Suspense>
@@ -115,24 +141,33 @@ function DynamicToolRoute() {
 }
 
 function LandingRoute() {
-  useSEO();
-  return <LandingPage />;
+  return (
+    <>
+      <Helmet>
+        <title>Tool Cabinet | Every Free Tool You Could Ever Need</title>
+        <meta name="description" content="Precision-engineered, 100% client-side web tools. Image compressor, background remover, converters, and more. 100% offline, free, and private." />
+      </Helmet>
+      <LandingPage />
+    </>
+  );
 }
 
 export default function App() {
   return (
-    <div className="bg-background text-on-surface font-sans min-h-screen flex flex-col antialiased selection:bg-[#008cff] selection:text-white">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingRoute />} />
-          
-          {/* All tools are dynamically loaded to enforce code splitting */}
-          <Route path="/tools/:toolId" element={<DynamicToolRoute />} />
-          
-          {/* Universal fallback */}
-          <Route path="*" element={<NotFoundState />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <HelmetProvider>
+      <div className="bg-background text-on-surface font-sans min-h-screen flex flex-col antialiased selection:bg-[#008cff] selection:text-white">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LandingRoute />} />
+            
+            {/* All tools are dynamically loaded to enforce code splitting */}
+            <Route path="/:toolId" element={<DynamicToolRoute />} />
+            
+            {/* Universal fallback */}
+            <Route path="*" element={<NotFoundState />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </HelmetProvider>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Copy, Check, Shield, FileText, Download, Trash2 } from 'lucide-react';
 
 export default function JsonFormatterTool({ onBack }: { onBack?: () => void }) {
-  const [inputText, setInputText] = useState(`{"project":"web-toolVerse","author":"Antigravity","stats":{"active":true,"totalTools":40},"tags":["offline","fast"]}`);
+  const [inputText, setInputText] = useState(`{"project":"Tool Cabinet","author":"Antigravity","stats":{"active":true,"totalTools":40},"tags":["offline","fast"]}`);
   const [outputText, setOutputText] = useState('');
   const [indentSize, setIndentSize] = useState<string>('2'); // '2', '4', 'tab'
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -71,7 +71,7 @@ export default function JsonFormatterTool({ onBack }: { onBack?: () => void }) {
             className="group flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-            <span className="font-mono text-[11px] uppercase tracking-widest">web-toolVerse</span>
+            <span className="font-mono text-[11px] uppercase tracking-widest">Tool Cabinet</span>
           </button>
 
           <div className="flex items-center gap-4">

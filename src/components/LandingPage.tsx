@@ -65,7 +65,7 @@ export default function LandingPage() {
       <main className="relative flex-grow flex flex-col items-center px-6 text-center w-full max-w-[1280px] mx-auto pt-16">
         <div className="absolute top-6 left-6 lg:left-12 right-6 lg:right-12 flex items-center justify-between">
           <div className="text-xl font-bold font-heading tracking-tight text-[#008cff]">
-            web-toolVerse
+            Tool Cabinet
           </div>
           <div className="flex items-center rounded-full border border-outline-variant bg-surface-container-low shadow-sm overflow-hidden h-9">
             <div className="flex items-center gap-2.5 px-4 h-full bg-surface-container-low">
@@ -110,7 +110,7 @@ export default function LandingPage() {
                        {filteredTools.map((tool, index) => (
                          <button
                            key={tool.id}
-                           onClick={() => navigate(`/tools/${tool.id}`)}
+                           onClick={() => navigate(`/${tool.id}`)}
                            className={`w-full flex items-center justify-between px-6 py-4 hover:bg-surface-container transition-colors ${index !== filteredTools.length - 1 ? 'border-b border-outline-variant' : ''}`}
                          >
                            <div>

@@ -3,9 +3,9 @@ import { Smartphone } from 'lucide-react'; // Using Smartphone as proxy for TikT
 import BaseSocialExtractor from './BaseSocialExtractor';
 
 const REDIRECTS = [
-  { pattern: /youtube\.com|youtu\.be/i, toolPath: '/tools/youtube-downloader', toolName: 'YouTube' },
-  { pattern: /facebook\.com|fb\.watch/i, toolPath: '/tools/facebook-downloader', toolName: 'Facebook' },
-  { pattern: /instagram\.com/i, toolPath: '/tools/instagram-downloader', toolName: 'Instagram' },
+  { pattern: /youtube\.com|youtu\.be/i, toolPath: '/youtube-downloader', toolName: 'YouTube' },
+  { pattern: /facebook\.com|fb\.watch/i, toolPath: '/facebook-downloader', toolName: 'Facebook' },
+  { pattern: /instagram\.com/i, toolPath: '/instagram-downloader', toolName: 'Instagram' },
 ];
 
 export default function TiktokDownloaderTool({ onBack }: { onBack?: () => void }) {

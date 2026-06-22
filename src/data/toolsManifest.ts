@@ -781,4 +781,12 @@ export const ALL_TOOLS: Tool[] = [
     icon: null,
     status: 'active',
   },
+  {
+    id: 'dictionary',
+    name: 'Dictionary Studio',
+    description: 'Lookup standard word definitions, phonetics, and audio pronunciations, or search for words using concept descriptions.',
+    category: 'Utility',
+    icon: null,
+    status: 'active',
+  },
 ];

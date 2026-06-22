@@ -123,7 +123,7 @@ function JsonTreeNode({ label, value, depth, searchQuery }: TreeNodeProps) {
 
 export default function JsonViewerTool({ onBack }: { onBack?: () => void }) {
   const [inputText, setInputText] = useState(`{
-  "project": "web-toolVerse",
+  "project": "Tool Cabinet",
   "version": "1.2.0",
   "author": "Antigravity AI",
   "features": [
@@ -188,7 +188,7 @@ export default function JsonViewerTool({ onBack }: { onBack?: () => void }) {
             className="group flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-            <span className="font-mono text-[11px] uppercase tracking-widest">web-toolVerse</span>
+            <span className="font-mono text-[11px] uppercase tracking-widest">Tool Cabinet</span>
           </button>
 
           <div className="flex items-center gap-4">
