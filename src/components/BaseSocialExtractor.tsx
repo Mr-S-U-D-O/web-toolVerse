@@ -250,8 +250,8 @@ export default function BaseSocialExtractor({
                   )}
                 </div>
 
-                {/* ── Expert Mode: DASH WASM Merging ── */}
-                {expertMode && formats.videoOnly.length > 0 && formats.audioOnly.length > 0 && (
+                {/* ── Expert Mode / Fallback: DASH WASM Merging ── */}
+                {(expertMode || formats.combined.length === 0) && formats.videoOnly.length > 0 && formats.audioOnly.length > 0 && (
                   <div className="bg-surface-container-low rounded-2xl border border-[#008cff]/20 overflow-hidden relative">
                     <div className="absolute top-0 left-0 w-1 h-full bg-[#008cff]"></div>
                     <div className="p-4 border-b border-outline-variant/50 bg-surface-container-lowest/50 flex items-center justify-between">
@@ -261,6 +261,13 @@ export default function BaseSocialExtractor({
                       </div>
                       <span className="font-mono text-[10px] text-[#008cff]/70 uppercase tracking-wider">Browser Merging</span>
                     </div>
+
+                    {formats.combined.length === 0 && (
+                      <div className="p-4 bg-[#008cff]/5 border-b border-outline-variant/30 text-xs text-on-surface-variant flex items-center gap-2">
+                        <Info className="w-4 h-4 text-[#008cff] flex-shrink-0" />
+                        <span>No combined streams available. Select video & audio streams below to merge them in your browser.</span>
+                      </div>
+                    )}
                     
                     <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>

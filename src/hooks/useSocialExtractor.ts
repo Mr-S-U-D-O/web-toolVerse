@@ -118,12 +118,21 @@ export function useSocialExtractor(platformName: string) {
       setProgress(Math.min(100, Math.max(0, Math.round(p * 100))));
     });
 
-    const baseURL = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core-mt@0.12.6/dist/esm';
+    const hasSAB = typeof SharedArrayBuffer !== 'undefined';
+    const baseURL = hasSAB
+      ? 'https://cdn.jsdelivr.net/npm/@ffmpeg/core-mt@0.12.6/dist/esm'
+      : 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
+
     const coreURL = await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript');
     const wasmURL = await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm');
-    const workerURL = await toBlobURL(`${baseURL}/ffmpeg-core.worker.js`, 'text/javascript');
 
-    await ffmpeg.load({ coreURL, wasmURL, workerURL });
+    if (hasSAB) {
+      const workerURL = await toBlobURL(`${baseURL}/ffmpeg-core.worker.js`, 'text/javascript');
+      await ffmpeg.load({ coreURL, wasmURL, workerURL });
+    } else {
+      await ffmpeg.load({ coreURL, wasmURL });
+    }
+    
     return ffmpeg;
   };
 
