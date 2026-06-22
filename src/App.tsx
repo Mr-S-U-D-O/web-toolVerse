@@ -7,6 +7,7 @@ import { ArrowLeft } from 'lucide-react';
 import { ALL_TOOLS } from './data/toolsManifest';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { getSeoData } from './data/toolsSeoData';
+import FaqSection from './components/FaqSection';
 
 // Dynamically load the rest so we don't break the app, but we manually map the examples.
 const toolModules = import.meta.glob('./components/**/*Tool.tsx');
@@ -95,34 +96,7 @@ function DynamicToolRoute() {
       <LazyComponent onBack={() => navigate('/')} />
       
       {/* ── SEO FAQ Section (Bottom Text Strategy) ────────────────────────── */}
-      <section className="w-full bg-surface py-12 lg:py-20 border-t border-outline-variant">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="max-w-3xl">
-            <h2 className="font-heading text-2xl font-bold tracking-tight mb-2 text-[#008cff]">
-              How it Works & FAQ
-            </h2>
-            <p className="text-on-surface-variant font-sans text-sm mb-10 leading-relaxed">
-              Learn more about our secure, 100% offline client-side tools and how they protect your data privacy.
-            </p>
-            <div className="flex flex-col gap-6">
-              {seo.faq.map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="p-6 border border-outline-variant rounded-xl bg-surface-container-low/50 hover:border-[#008cff]/30 transition-colors"
-                >
-                  <h3 className="font-heading font-semibold text-lg mb-2 flex items-start gap-3">
-                    <span className="text-[#008cff] font-mono text-sm leading-6">Q{idx + 1}.</span>
-                    <span className="text-on-surface">{item.question}</span>
-                  </h3>
-                  <p className="text-on-surface-variant font-sans text-sm leading-relaxed pl-8">
-                    {item.answer}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <FaqSection faqData={seo.faq} />
 
       <RelatedTools currentToolId={tool.id} onNavigate={(id) => navigate(`/${id}`)} />
       
