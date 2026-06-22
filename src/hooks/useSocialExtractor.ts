@@ -178,7 +178,7 @@ export function useSocialExtractor(platformName: string) {
       await ffmpeg.deleteFile(aName);
       await ffmpeg.deleteFile(outName);
 
-      const blob = new Blob([data], { type: `video/${ext}` });
+      const blob = new Blob([data as any], { type: `video/${ext}` });
       const url = URL.createObjectURL(blob);
       setOutputUrl(url);
       setStatus('done');

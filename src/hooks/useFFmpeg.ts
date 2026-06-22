@@ -98,7 +98,7 @@ export function useFFmpeg() {
         setStatus('ready');
         setProgress(100);
 
-        return new Blob([data], { type: `video/${targetFormat === 'gif' ? 'gif' : targetFormat}` });
+        return new Blob([data as any], { type: `video/${targetFormat === 'gif' ? 'gif' : targetFormat}` });
       } catch (err) {
         console.error(err);
         setStatus('error');
