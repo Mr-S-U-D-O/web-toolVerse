@@ -1,220 +1,127 @@
-import { useState } from 'react';
+/// <reference types="vite/client" />
+import React, { Suspense, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useParams, useNavigate, useLocation } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
-import CropperTool from './components/CropperTool';
-import CompressorTool from './components/CompressorTool';
-import ImageResizerTool from './components/ImageResizerTool';
-import TextFormatterTool from './components/TextFormatterTool';
-import JsonFormatterTool from './components/JsonFormatterTool';
-import ColorConverterTool from './components/ColorConverterTool';
-import PasswordGeneratorTool from './components/PasswordGeneratorTool';
-import Base64ConverterTool from './components/Base64ConverterTool';
-import UrlEncoderTool from './components/UrlEncoderTool';
-import QrCodeGeneratorTool from './components/QrCodeGeneratorTool';
-import HashGeneratorTool from './components/HashGeneratorTool';
-import MarkdownPreviewTool from './components/MarkdownPreviewTool';
-import StringReverserTool from './components/StringReverserTool';
-import WordCounterTool from './components/WordCounterTool';
-import ListSorterTool from './components/ListSorterTool';
-import CssMinifierTool from './components/CssMinifierTool';
-import JsonMinifierTool from './components/JsonMinifierTool';
-import JavaScriptMinifierTool from './components/JavaScriptMinifierTool';
-import PercentagesCalculatorTool from './components/PercentagesCalculatorTool';
-import RoiCalculatorTool from './components/RoiCalculatorTool';
-import BmiCalculatorTool from './components/BmiCalculatorTool';
-import CsvToJsonTool from './components/CsvToJsonTool';
-import AnyTextTool from './components/AnyTextTool';
-import AnyFinTool from './components/AnyFinTool';
-import AnyMathTool from './components/AnyMathTool';
-import AnyCodeTool from './components/AnyCodeTool';
 import RelatedTools from './components/RelatedTools';
-import { ACTIVE_TOOLS } from './components/LandingPage';
+import { ArrowLeft } from 'lucide-react';
+import { ALL_TOOLS } from './data/toolsManifest';
 
-export default function App() {
-  const [currentView, setCurrentView] = useState<'landing' | string>('landing');
+// Dynamically load the rest so we don't break the app, but we manually map the examples.
+const toolModules = import.meta.glob('./components/**/*Tool.tsx');
+const lazyTools: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {};
+
+Object.entries(toolModules).forEach(([path, importFn]) => {
+  const nameMatch = path.match(/\/([^/]+)\.tsx$/);
+  if (nameMatch) {
+    lazyTools[nameMatch[1]] = React.lazy(importFn as any);
+  }
+});
+
+function getClassName(id: string) {
+  return id.replace(/[^a-zA-Z0-9]/g, '-').split('-').filter(Boolean).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('') + 'Tool';
+}
+
+function useSEO(toolId?: string) {
+  useEffect(() => {
+    if (!toolId) {
+      document.title = "Web-ToolVerse | Every Free Tool You Could Ever Need";
+      let meta = document.querySelector('meta[name="description"]');
+      if (meta) {
+        meta.setAttribute("content", "A comprehensive collection of free web tools.");
+      }
+      return;
+    }
+
+    const tool = ALL_TOOLS.find(t => t.id === toolId);
+    if (tool) {
+      document.title = `${tool.name} | Web-ToolVerse`;
+      let meta = document.querySelector('meta[name="description"]');
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('name', 'description');
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute("content", tool.description || `Free online ${tool.name} tool.`);
+    } else {
+      document.title = "Tool Not Found | Web-ToolVerse";
+    }
+  }, [toolId]);
+}
+
+function NotFoundState({ toolId }: { toolId?: string }) {
+  const navigate = useNavigate();
+  useSEO(toolId); // Call here for 404 title
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center bg-background text-on-surface w-full animate-in fade-in zoom-in duration-300">
+      <div className="max-w-md flex flex-col items-center">
+        <div className="w-16 h-16 rounded-2xl bg-[#008cff]/10 text-[#008cff] flex items-center justify-center mb-6 border border-[#008cff]/20">
+          <span className="font-heading text-2xl font-bold">404</span>
+        </div>
+        <h2 className="text-3xl font-bold mb-4 font-heading tracking-tight">Tool Not Found</h2>
+        <p className="text-on-surface-variant mb-10 max-w-sm text-lg leading-relaxed">
+          The tool {toolId ? `"${toolId}"` : 'you are looking for'} doesn't seem to exist or has been moved.
+        </p>
+        <button 
+          onClick={() => navigate('/')}
+          className="group flex items-center justify-center gap-2 bg-[#008cff] text-white hover:bg-[#0070cc] font-mono text-sm tracking-wider uppercase px-6 py-3 rounded-lg transition-colors shadow-sm"
+        >
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          Back to Directory
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function DynamicToolRoute() {
+  const { toolId } = useParams();
+  const navigate = useNavigate();
+  
+  useSEO(toolId);
+
+  if (!toolId) return <NotFoundState />;
+  
+  const className = getClassName(toolId);
+  const LazyComponent = lazyTools[className];
+
+  if (!LazyComponent) {
+    return <NotFoundState toolId={toolId} />;
+  }
 
   return (
-    <div className="bg-background text-on-surface font-sans min-h-screen flex flex-col antialiased selection:bg-primary selection:text-on-primary">
-      {currentView === 'landing' && (
-        <LandingPage onNavigate={(toolId) => setCurrentView(toolId)} />
-      )}
-      
-      {currentView === 'image-cropper' && (
-        <CropperTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'image-compressor' && (
-        <CompressorTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'image-resizer' && (
-        <ImageResizerTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'text-formatter' && (
-        <TextFormatterTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'json-formatter' && (
-        <JsonFormatterTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'color-converter' && (
-        <ColorConverterTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'password-generator' && (
-        <PasswordGeneratorTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'base64-converter' && (
-        <Base64ConverterTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'url-encoder' && (
-        <UrlEncoderTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'qrcode-generator' && (
-        <QrCodeGeneratorTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'hash-generator' && (
-        <HashGeneratorTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'markdown-preview' && (
-        <MarkdownPreviewTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'text-string-reverser' && (
-        <StringReverserTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'text-word-counter' && (
-        <WordCounterTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'text-list-sorter' && (
-        <ListSorterTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'dev-css-minifier' && (
-        <CssMinifierTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'dev-json-minifier' && (
-        <JsonMinifierTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'dev-javascript-minifier' && (
-        <JavaScriptMinifierTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'math-percentages-calculator' && (
-        <PercentagesCalculatorTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'fin-roi-calculator' && (
-        <RoiCalculatorTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'health-bmi-calculator' && (
-        <BmiCalculatorTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'convert-csv-to-json' && (
-        <CsvToJsonTool onBack={() => setCurrentView('landing')} />
-      )}
-
-      {/* Generic Text tools render */}
-      {currentView.startsWith('text-') && !['text-string-reverser', 'text-word-counter', 'text-list-sorter'].includes(currentView) && (() => {
-         const match = currentView.match(/^text-(.+)-(.+)$/);
-         if (match) {
-            const selectedTool = ACTIVE_TOOLS.find(t => t.id === currentView);
-            if (selectedTool) {
-              return <AnyTextTool onBack={() => setCurrentView('landing')} title={selectedTool.name} action={match[2]} type={match[1]} />
-            }
-         }
-         return null;
-      })()}
-
-      {/* Generic Finance tools render */}
-      {currentView.startsWith('fin-') && !['fin-roi-calculator'].includes(currentView) && (() => {
-         const match = currentView.match(/^fin-(.+)-(.+)$/);
-         if (match) {
-            const selectedTool = ACTIVE_TOOLS.find(t => t.id === currentView);
-            if (selectedTool) {
-               return <AnyFinTool onBack={() => setCurrentView('landing')} title={selectedTool.name} action={match[2]} topic={match[1]} />
-            }
-         }
-         return null;
-      })()}
-
-      {/* Generic Math tools render */}
-      {currentView.startsWith('math-') && !['math-percentages-calculator'].includes(currentView) && (() => {
-         const match = currentView.match(/^math-(.+)-(.+)$/);
-         if (match) {
-            const selectedTool = ACTIVE_TOOLS.find(t => t.id === currentView);
-            if (selectedTool) {
-               return <AnyMathTool onBack={() => setCurrentView('landing')} title={selectedTool.name} action={match[2]} topic={match[1]} />
-            }
-         }
-         return null;
-      })()}
-
-      {/* Generic Code tools render */}
-      {currentView.startsWith('code-') && (() => {
-         const match = currentView.match(/^code-(.+)-(.+)$/);
-         if (match) {
-            const selectedTool = ACTIVE_TOOLS.find(t => t.id === currentView);
-            if (selectedTool) {
-               return <AnyCodeTool onBack={() => setCurrentView('landing')} title={selectedTool.name} action={match[2]} lang={match[1]} />
-            }
-         }
-         return null;
-      })()}
-
-      {/* Fallback for tools we haven't implemented yet */}
-      {!currentView.startsWith('text-') && !currentView.startsWith('fin-') && !currentView.startsWith('math-') && !currentView.startsWith('code-') && currentView !== 'landing' && 
-       currentView !== 'image-cropper' && 
-       currentView !== 'image-compressor' && 
-       currentView !== 'image-resizer' && 
-       currentView !== 'text-formatter' && 
-       currentView !== 'json-formatter' && 
-       currentView !== 'color-converter' && 
-       currentView !== 'password-generator' && 
-       currentView !== 'base64-converter' && 
-       currentView !== 'url-encoder' && 
-       currentView !== 'qrcode-generator' && 
-       currentView !== 'hash-generator' && 
-       currentView !== 'markdown-preview' && 
-       currentView !== 'text-string-reverser' && 
-       currentView !== 'text-word-counter' && 
-       currentView !== 'text-list-sorter' && 
-       currentView !== 'dev-css-minifier' && 
-       currentView !== 'dev-json-minifier' && 
-       currentView !== 'dev-javascript-minifier' && 
-       currentView !== 'math-percentages-calculator' && 
-       currentView !== 'fin-roi-calculator' && 
-       currentView !== 'health-bmi-calculator' && 
-       currentView !== 'convert-csv-to-json' && (
-        <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4 font-heading text-primary">Coming Soon</h2>
-          <p className="text-on-surface-variant mb-8 max-w-md">
-            The {currentView} tool is currently under development. Please check back later.
-          </p>
-          <button 
-            onClick={() => setCurrentView('landing')}
-            className="px-6 py-2 bg-primary text-on-primary font-bold rounded hover:bg-surface-tint transition-colors"
-          >
-            Back to Tools
-          </button>
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-background text-on-surface">
+        <div className="flex flex-col items-center gap-4">
+           <div className="w-8 h-8 rounded-full border-4 border-[#008cff] border-t-transparent animate-spin"></div>
+           <p className="font-mono text-sm tracking-widest uppercase">Loading Tool Environment...</p>
         </div>
-      )}
+      </div>
+    }>
+      <LazyComponent onBack={() => navigate('/')} />
+      <RelatedTools currentToolId={toolId} onNavigate={(id) => navigate(`/tools/${id}`)} />
+    </Suspense>
+  );
+}
 
-      {currentView !== 'landing' && (
-        <RelatedTools currentToolId={currentView} onNavigate={setCurrentView} />
-      )}
+function LandingRoute() {
+  useSEO();
+  return <LandingPage />;
+}
+
+export default function App() {
+  return (
+    <div className="bg-background text-on-surface font-sans min-h-screen flex flex-col antialiased selection:bg-[#008cff] selection:text-white">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingRoute />} />
+          
+          {/* All tools are dynamically loaded to enforce code splitting */}
+          <Route path="/tools/:toolId" element={<DynamicToolRoute />} />
+          
+          {/* Universal fallback */}
+          <Route path="*" element={<NotFoundState />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

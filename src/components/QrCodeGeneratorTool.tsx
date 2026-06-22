@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Copy, Check, Download, QrCode } from 'lucide-react';
 import QRCode from 'react-qr-code';
+import { useNavigate } from 'react-router-dom';
 
-interface QrCodeGeneratorToolProps {
-  onBack: () => void;
-}
-
-export default function QrCodeGeneratorTool({ onBack }: QrCodeGeneratorToolProps) {
+export default function QrCodeGeneratorTool() {
+  const navigate = useNavigate();
   const [input, setInput] = useState('https://google.com');
   const [size, setSize] = useState([256]);
   const [bgColor, setBgColor] = useState('#ffffff');
@@ -38,7 +36,7 @@ export default function QrCodeGeneratorTool({ onBack }: QrCodeGeneratorToolProps
     <div className="flex flex-col min-h-screen w-full bg-background text-on-surface">
       <header className="w-full border-b border-outline-variant bg-background sticky top-0 z-50">
         <div className="max-w-[1280px] mx-auto px-6 h-16 flex items-center">
-          <button onClick={onBack} className="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors group">
+          <button onClick={() => navigate('/')} className="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors group">
              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
              <span className="font-mono text-sm tracking-widest font-medium uppercase mt-0.5">Back to Main</span>
           </button>
