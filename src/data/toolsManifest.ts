@@ -26,4 +26,13 @@ export const ALL_TOOLS: Tool[] = [
     icon: null,
     status: 'active',
   },
+  {
+    id: 'background-remover',
+    name: 'Background Remover',
+    description:
+      'Remove image backgrounds instantly using on-device AI. 100% private — no uploads, no limits, full-resolution transparent PNG.',
+    category: 'Image',
+    icon: null,
+    status: 'active',
+  },
 ];

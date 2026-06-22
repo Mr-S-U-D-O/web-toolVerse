@@ -418,7 +418,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
       const sourceMap = new Map(sources.map((s) => [s.id, s]));
       const pdfBytes = await assemblePdf(sourceMap, pagesToExport);
 
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const blob = new Blob([pdfBytes as any], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
