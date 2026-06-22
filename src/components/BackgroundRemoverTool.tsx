@@ -383,15 +383,13 @@ function ModelLoadingPanel({
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       className="w-full rounded-2xl overflow-hidden border border-violet-500/30"
-      style={{
-        background: 'linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(59,130,246,0.06) 50%, rgba(16,185,129,0.05) 100%)',
-      }}
+      style={{ background: 'rgba(139,92,246,0.06)' }}
     >
       <div className="p-8 flex flex-col items-center gap-6 text-center">
         {/* Icon */}
         <div className="relative">
           <div className="w-16 h-16 rounded-2xl flex items-center justify-center"
-            style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.2), rgba(59,130,246,0.2))' }}>
+            style={{ background: 'rgba(139,92,246,0.15)' }}>
             {modelError ? (
               <AlertCircle className="w-8 h-8 text-red-400" />
             ) : (
@@ -422,8 +420,8 @@ function ModelLoadingPanel({
             </div>
             <button
               onClick={onRetry}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-mono text-sm uppercase tracking-wider text-white transition-all"
-              style={{ background: 'linear-gradient(135deg, #7c3aed, #3b82f6)' }}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-mono text-sm uppercase tracking-wider text-white transition-all hover:bg-violet-700"
+              style={{ background: '#7c3aed' }}
             >
               <RefreshCw className="w-4 h-4" />
               Retry
@@ -454,8 +452,7 @@ function ModelLoadingPanel({
               </div>
               <div className="h-2 rounded-full bg-surface-container overflow-hidden">
                 <motion.div
-                  className="h-full rounded-full"
-                  style={{ background: 'linear-gradient(90deg, #7c3aed, #3b82f6, #10b981)' }}
+                  className="h-full rounded-full bg-violet-600"
                   animate={{ width: `${Math.max(4, progress)}%` }}
                   transition={{ ease: 'easeOut', duration: 0.4 }}
                 />
@@ -930,17 +927,16 @@ export default function BackgroundRemoverTool({ onBack }: BackgroundRemoverToolP
                 exit={{ opacity: 0 }}
                 className="absolute inset-0 flex flex-col items-center justify-center gap-5"
               >
-                {/* Animated gradient icon */}
+                {/* Drop zone icon */}
                 <motion.div
                   className="relative w-20 h-20 rounded-3xl flex items-center justify-center"
-                  style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.15), rgba(59,130,246,0.12))' }}
+                  style={{ background: 'rgba(139,92,246,0.12)' }}
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
                   <ImageIcon className="w-9 h-9 text-violet-400" />
                   <motion.div
-                    className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center"
-                    style={{ background: 'linear-gradient(135deg, #7c3aed, #3b82f6)' }}
+                    className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center bg-violet-600"
                     animate={{ rotate: [0, 15, -15, 0] }}
                     transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                   >
@@ -1000,8 +996,7 @@ export default function BackgroundRemoverTool({ onBack }: BackgroundRemoverToolP
                   <button
                     onClick={runAll}
                     disabled={modelState !== 'ready' || isProcessing}
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-mono uppercase tracking-wider text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed"
-                    style={{ background: 'linear-gradient(135deg, #7c3aed, #3b82f6)' }}
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-mono uppercase tracking-wider text-white bg-violet-600 hover:bg-violet-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     {isProcessing ? (
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -1039,8 +1034,7 @@ export default function BackgroundRemoverTool({ onBack }: BackgroundRemoverToolP
                 <div className="flex-1 min-w-0">
                   <div className="h-1.5 rounded-full bg-surface-container overflow-hidden">
                     <motion.div
-                      className="h-full rounded-full"
-                      style={{ background: 'linear-gradient(90deg, #7c3aed, #3b82f6)' }}
+                      className="h-full rounded-full bg-violet-600"
                       animate={{ width: `${inferenceProgress}%` }}
                       transition={{ ease: 'easeOut', duration: 0.3 }}
                     />
