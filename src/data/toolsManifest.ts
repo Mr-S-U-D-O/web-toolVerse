@@ -860,4 +860,13 @@ export const ALL_TOOLS: Tool[] = [
     icon: null,
     status: 'active',
   },
+  {
+    id: 'exif-scrubber',
+    name: 'Photo EXIF & GPS Scrubber',
+    description: 'Permanently delete hidden GPS coordinates, camera data, and EXIF metadata from your photos offline.',
+    category: 'Privacy',
+    keywords: ["remove gps from photo", "delete image data", "strip exif", "photo privacy", "clean image tags"],
+    icon: null,
+    status: 'active',
+  },
 ];
