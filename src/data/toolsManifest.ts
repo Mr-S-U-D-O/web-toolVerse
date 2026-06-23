@@ -806,4 +806,13 @@ export const ALL_TOOLS: Tool[] = [
     icon: null,
     status: 'active',
   },
+  {
+    id: 'regex-tester',
+    name: 'Regex Tester Studio',
+    description: 'Test regular expressions securely and completely offline. Your sensitive log data never leaves your browser.',
+    category: 'Developer',
+    keywords: ["regular expression", "match text", "extract pattern", "regex sandbox", "test regex", "parse logs"],
+    icon: null,
+    status: 'active',
+  },
 ];
