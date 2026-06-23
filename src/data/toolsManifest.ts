@@ -824,4 +824,13 @@ export const ALL_TOOLS: Tool[] = [
     icon: null,
     status: 'active',
   },
+  {
+    id: 'secure-diff-checker',
+    name: 'Secure Diff Checker',
+    description: 'Compare text, code, or JSON files side-by-side to highlight differences. 100% offline and private.',
+    category: 'Developer',
+    keywords: ["compare text", "find differences", "code comparator", "text diff", "version checker", "check changes"],
+    icon: null,
+    status: 'active',
+  },
 ];
