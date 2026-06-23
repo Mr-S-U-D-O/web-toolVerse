@@ -815,4 +815,13 @@ export const ALL_TOOLS: Tool[] = [
     icon: null,
     status: 'active',
   },
+  {
+    id: 'bulk-image-resizer',
+    name: 'Bulk Image Resizer & Watermarker',
+    description: 'Batch resize, crop, and watermark hundreds of images instantly. 100% offline processing with single-click ZIP export.',
+    category: 'Media',
+    keywords: ["batch resize", "add logo to image", "stamp images", "change resolution", "bulk photo editor", "crop pictures"],
+    icon: null,
+    status: 'active',
+  },
 ];
