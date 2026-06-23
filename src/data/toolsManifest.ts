@@ -5,6 +5,7 @@ export interface Tool {
   category: string;
   icon: any;
   status: 'active';
+  keywords?: string[];
 }
 
 export const ALL_TOOLS: Tool[] = [
@@ -21,8 +22,9 @@ export const ALL_TOOLS: Tool[] = [
     id: 'pdf-studio',
     name: 'PDF Studio',
     description:
-      'Merge, split, reorder, rotate and encrypt PDFs in one workflow. No uploads. 100% client-side.',
+      'Merge multiple PDFs, split page bounds by range, set structural passwords, and strip restrictions client-side.',
     category: 'PDF',
+    keywords: ["merge pdf online", "protect pdf file", "split pdf pages", "unlock pdf", "client-side pdf tool"],
     icon: null,
     status: 'active',
   },
@@ -866,6 +868,24 @@ export const ALL_TOOLS: Tool[] = [
     description: 'Permanently delete hidden GPS coordinates, camera data, and EXIF metadata from your photos offline.',
     category: 'Privacy',
     keywords: ["remove gps from photo", "delete image data", "strip exif", "photo privacy", "clean image tags"],
+    icon: null,
+    status: 'active',
+  },
+  {
+    id: 'whatsapp-link-generator',
+    name: 'WhatsApp Chat Link Generator',
+    description: "Generate custom click-to-chat WhatsApp links with pre-filled text lines to capture sales leads instantly.",
+    category: "Utility",
+    keywords: ["whatsapp link creator", "click to chat generator", "wa me shortcut", "marketing link builder"],
+    icon: null,
+    status: 'active',
+  },
+  {
+    id: 'document-text-extractor',
+    name: 'PDF Text Extractor',
+    description: "Instantly strip and extract all readable text from any PDF document. 100% offline, preserving data privacy.",
+    category: "Document",
+    keywords: ["pdf to text", "extract pdf words", "pdf to markdown", "read pdf offline", "strip pdf text"],
     icon: null,
     status: 'active',
   },

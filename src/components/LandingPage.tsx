@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, ArrowRight, Headphones } from 'lucide-react';
+import { Search, ArrowRight, Headphones, Github, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ALL_TOOLS } from '../data/toolsManifest';
 import Fuse from 'fuse.js';
@@ -33,14 +33,26 @@ export default function LandingPage() {
           <div className="text-xl font-bold font-heading tracking-tight text-[#008cff]">
             Tool Cabinet
           </div>
-          <div className="flex items-center rounded-full border border-outline-variant bg-surface-container-low shadow-sm overflow-hidden h-9">
-            <div className="flex items-center gap-2.5 px-4 h-full bg-surface-container-low">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 relative">
-                <div className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75"></div>
+          <div className="flex items-center gap-2.5">
+            <a
+              href="https://github.com/Mr-S-U-D-O/web-toolVerse"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 h-9 rounded-full border border-outline-variant bg-surface-container-low hover:bg-surface-container hover:border-outline text-on-surface hover:text-[#008cff] transition-all font-mono text-[11px] uppercase tracking-widest font-medium shadow-sm"
+            >
+              <Github className="w-3.5 h-3.5" />
+              <Star className="w-3.5 h-3.5 fill-current text-amber-500" />
+              <span>Star on GitHub</span>
+            </a>
+            <div className="flex items-center rounded-full border border-outline-variant bg-surface-container-low shadow-sm overflow-hidden h-9">
+              <div className="flex items-center gap-2.5 px-4 h-full bg-surface-container-low">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 relative">
+                  <div className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75"></div>
+                </div>
+                <span className="font-mono text-[11px] uppercase tracking-widest text-on-surface font-medium">
+                  {ALL_TOOLS.length} Functional Tool{ALL_TOOLS.length === 1 ? '' : 's'}
+                </span>
               </div>
-              <span className="font-mono text-[11px] uppercase tracking-widest text-on-surface font-medium">
-                {ALL_TOOLS.length} Functional Tool{ALL_TOOLS.length === 1 ? '' : 's'}
-              </span>
             </div>
           </div>
         </div>
