@@ -2,61 +2,27 @@ import React, { useState, useMemo } from 'react';
 import { Search, ArrowRight, Headphones } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ALL_TOOLS } from '../data/toolsManifest';
-
-// @ts-ignore
-
-function getRelevanceScore(tool: typeof ALL_TOOLS[0], query: string) {
-  const qStr = query.toLowerCase().trim();
-  if (!qStr) return 0;
-  
-  const queryTokens = qStr.split(/\s+/).filter(t => t.length > 0);
-  let score = 0;
-  
-  const toolName = tool.name.toLowerCase();
-  const catName = tool.category.toLowerCase();
-  
-  // 1. Exact Match string for highest relevance
-  if (toolName === qStr) score += 1000;
-  
-  // 2. Starts with query
-  if (toolName.startsWith(qStr)) score += 500;
-  
-  // 3. Exact Substring in name
-  if (toolName.includes(qStr)) score += 200;
-  
-  // 4. Category Match
-  if (catName === qStr) score += 150;
-  else if (catName.includes(qStr)) score += 50;
-
-  // 5. Token Level matching (highly robust for partials and scattered keywords)
-  queryTokens.forEach(token => {
-    // Name checks
-    const toolTokens = toolName.split(/\s+/);
-    if (toolTokens.includes(token)) score += 100;
-    else if (toolTokens.some(t => t.startsWith(token))) score += 40;
-    else if (toolName.includes(token)) score += 15;
-
-    // Category checks
-    if (catName.includes(token)) score += 15;
-  });
-
-  return score;
-}
+import Fuse from 'fuse.js';
 
 export default function LandingPage() {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
   
+  const fuse = useMemo(() => new Fuse(ALL_TOOLS, {
+    keys: [
+      { name: 'name', weight: 0.5 },
+      { name: 'keywords', weight: 0.3 },
+      { name: 'description', weight: 0.2 }
+    ],
+    threshold: 0.3
+  }), []);
+
   const filteredTools = useMemo(() => {
     const cleanQuery = query.trim();
-    if (cleanQuery.length < 2) return [];
+    if (cleanQuery.length === 0) return [];
 
-    return ALL_TOOLS
-      .map(tool => ({ tool, score: getRelevanceScore(tool, cleanQuery) }))
-      .filter(item => item.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .map(item => item.tool);
-  }, [query]);
+    return fuse.search(cleanQuery).map(result => result.item);
+  }, [query, fuse]);
 
   return (
     <div className="flex flex-col min-h-screen relative w-full overflow-hidden bg-background text-on-surface">
@@ -102,11 +68,11 @@ export default function LandingPage() {
           </div>
           
           <div className="w-full max-w-3xl min-h-[300px] flex flex-col items-center transition-all duration-300">
-            {query.trim().length >= 2 ? (
+            {query.trim().length > 0 ? (
                <div className="w-full flex flex-col animate-in fade-in slide-in-from-bottom-4 duration-300 relative z-10">
                   {/* Search Results List */}
                   {filteredTools.length > 0 ? (
-                    <div className="w-full flex flex-col items-start text-left border border-outline-variant rounded-2xl bg-surface-container-low overflow-hidden shadow-2xl">
+                     <div className="w-full flex flex-col items-start text-left border border-outline-variant rounded-2xl bg-surface-container-low overflow-hidden shadow-2xl">
                        {filteredTools.map((tool, index) => (
                          <button
                            key={tool.id}
@@ -120,16 +86,16 @@ export default function LandingPage() {
                            <ArrowRight className="w-5 h-5 text-outline group-hover:text-[#008cff] transition-colors" />
                          </button>
                        ))}
-                    </div>
-                  ) : (
-                    <div className="text-on-surface-variant py-8 font-sans">
-                       No tools found matching "{query}"
-                    </div>
-                  )}
+                     </div>
+                   ) : (
+                     <div className="text-on-surface-variant py-8 font-sans">
+                        No tools found matching "{query}"
+                     </div>
+                   )}
                </div>
             ) : (
                <div className="flex flex-col items-center animate-in fade-in duration-300 relative z-10">
-                  <h2 className="text-2xl font-semibold font-heading mb-8">Whatever you need, just search it.</h2>
+                  <h2 className="text-2xl font-semibold font-heading mb-8 text-on-surface">Whatever you need, just search it.</h2>
                   
                   {/* Tag Cloud */}
                   <div className="flex flex-wrap justify-center gap-3 max-w-4xl">

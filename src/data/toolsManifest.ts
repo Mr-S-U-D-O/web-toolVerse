@@ -789,4 +789,12 @@ export const ALL_TOOLS: Tool[] = [
     icon: null,
     status: 'active',
   },
+  {
+    id: 'web-ide-studio',
+    name: 'Web IDE Studio',
+    description: 'A 100% client-side web IDE for HTML, CSS, and JavaScript. Manage virtual files, use Monaco editor, and view live previews.',
+    category: 'Development',
+    icon: null,
+    status: 'active',
+  },
 ];
