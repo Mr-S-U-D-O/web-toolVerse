@@ -797,4 +797,13 @@ export const ALL_TOOLS: Tool[] = [
     icon: null,
     status: 'active',
   },
+  {
+    id: 'qr-code-studio',
+    name: 'QR Code Studio',
+    description: 'Generate 100% free, static, never-expiring QR codes for URLs, Wi-Fi, and Contacts. Download as PNG or SVG.',
+    category: 'Utility',
+    keywords: ["barcode maker", "wifi qr", "static qr", "never expire qr", "vcard generator", "menu code"],
+    icon: null,
+    status: 'active',
+  },
 ];
