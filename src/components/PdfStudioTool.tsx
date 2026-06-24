@@ -1,3 +1,4 @@
+import { ArrowLeft, Shield } from 'lucide-react';
 import React, { useState, useRef, DragEvent, ChangeEvent } from 'react';
 import { PDFDocument } from 'pdf-lib';
 
@@ -275,49 +276,38 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
   };
 
   return (
-    <div className="min-h-screen bg-background text-on-surface w-full flex flex-col font-mono selection:bg-[#008cff] selection:text-white">
-      
-      {/* Brutalist Sticky Header */}
+    <div className="min-h-screen bg-background text-on-surface w-full pb-20 animate-in fade-in duration-300">
+      {/* Header */}
       <header className="sticky top-0 z-30 w-full border-b border-outline-variant bg-background/95 backdrop-blur-sm">
-        <div className="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-[1280px] mx-auto px-6 h-14 flex items-center justify-between">
           <button
             onClick={onBack}
-            className="text-on-surface-variant hover:text-[#008cff] transition-colors uppercase tracking-widest font-bold text-xs"
+            className="group flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
           >
-            [ BACK TO CABINET ]
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+            <span className="font-mono text-[11px] uppercase tracking-widest">Tool Cabinet</span>
           </button>
-          
-          {/* Plain uppercase header selector bar */}
-          <div className="flex items-center gap-6">
-            {(['MERGE', 'SPLIT', 'PROTECT', 'UNLOCK'] as TabType[]).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => {
-                  setActiveTab(tab);
-                  setError(null);
-                }}
-                className={`text-xs font-bold tracking-widest transition-colors ${
-                  activeTab === tab ? 'text-[#008cff]' : 'text-on-surface-variant hover:text-on-surface'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
+
+          <div className="flex items-center gap-4">
+            <div className="font-sans text-sm font-medium text-on-surface">PDF Studio</div>
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#008cff]/10 border border-[#008cff]/20 text-[10px] font-mono uppercase tracking-wider text-[#008cff]">
+              <Shield className="w-3 h-3" />
+              100% Client-Side
+            </div>
           </div>
+          <div className="w-[120px]" />
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <main className="flex-grow max-w-[900px] mx-auto w-full px-6 py-12 flex flex-col gap-10">
-        
-        {/* Title Block */}
-        <div className="border-b border-outline-variant pb-6">
-          <h1 className="text-3xl font-black uppercase tracking-tight text-on-surface mb-2">
-            PDF STUDIO // {activeTab}
-          </h1>
-          <p className="text-on-surface-variant text-sm font-sans tracking-wide">
-            Professional, 100% client-side PDF utility suite. All operations run directly in browser sandbox memory.
-          </p>
+      <main className="max-w-[1280px] mx-auto px-6 py-10 w-full">
+        {/* Title */}
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 className="font-heading text-3xl font-bold tracking-tight text-[#008cff]">PDF Studio</h1>
+            <p className="text-on-surface-variant mt-2 text-sm font-sans max-w-2xl">
+              Merge multiple PDFs, split page bounds by range, set structural passwords, and strip restrictions client-side.
+            </p>
+          </div>
         </div>
 
         {/* Global Error Banner */}
@@ -329,7 +319,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
 
         {/* Global Loading Spinner */}
         {loading && (
-          <div className="border border-[#008cff] bg-[#008cff]/5 text-[#008cff] p-4 text-xs font-bold uppercase tracking-widest text-center">
+          <div className="border border-[#008cff] bg-[#008cff]/5 text-[#008cff] p-4 text-xs font-bold uppercase tracking-wide text-center">
             PROCESSING IN CLIENT MEMORY...
           </div>
         )}
@@ -351,7 +341,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
               onClick={() => mergeFileInputRef.current?.click()}
               className="border-2 border-dashed border-outline-variant hover:border-[#008cff] bg-surface-container-low p-12 text-center cursor-pointer transition-all"
             >
-              <span className="text-xs uppercase font-bold tracking-widest text-on-surface-variant">
+              <span className="text-xs uppercase font-bold tracking-wide text-on-surface-variant">
                 DROP PDF FILES HERE OR CLICK TO BROWSE
               </span>
             </div>
@@ -362,10 +352,10 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
                     <tr className="bg-surface-container-low border-b border-outline-variant">
-                      <th className="p-3 uppercase font-bold tracking-widest border-r border-outline-variant">ORDER</th>
-                      <th className="p-3 uppercase font-bold tracking-widest border-r border-outline-variant">FILENAME</th>
-                      <th className="p-3 uppercase font-bold tracking-widest border-r border-outline-variant text-right">PAGES</th>
-                      <th className="p-3 uppercase font-bold tracking-widest">ACTIONS</th>
+                      <th className="p-3 uppercase font-bold tracking-wide border-r border-outline-variant">ORDER</th>
+                      <th className="p-3 uppercase font-bold tracking-wide border-r border-outline-variant">FILENAME</th>
+                      <th className="p-3 uppercase font-bold tracking-wide border-r border-outline-variant text-right">PAGES</th>
+                      <th className="p-3 uppercase font-bold tracking-wide">ACTIONS</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -380,20 +370,20 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
                             disabled={idx === 0}
                             className="hover:text-[#008cff] disabled:opacity-30 uppercase font-bold tracking-wider"
                           >
-                            [ UP ]
+                            Up
                           </button>
                           <button
                             onClick={() => handleMergeMove(idx, 'DOWN')}
                             disabled={idx === mergeFiles.length - 1}
                             className="hover:text-[#008cff] disabled:opacity-30 uppercase font-bold tracking-wider"
                           >
-                            [ DOWN ]
+                            Down
                           </button>
                           <button
                             onClick={() => handleMergeRemove(file.id)}
                             className="text-red-500 hover:text-red-600 uppercase font-bold tracking-wider ml-2"
                           >
-                            [ REMOVE ]
+                            Remove
                           </button>
                         </td>
                       </tr>
@@ -407,9 +397,9 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
             <button
               onClick={handleMergeSubmit}
               disabled={mergeFiles.length === 0}
-              className="w-full py-4 bg-[#008cff] hover:bg-[#0070cc] text-white disabled:opacity-40 text-xs font-bold uppercase tracking-widest transition-all"
+              className="w-full py-4 bg-[#008cff] hover:bg-[#0070cc] text-white disabled:opacity-40 text-xs font-bold uppercase tracking-wide transition-all"
             >
-              [ BIND DOCUMENTS ]
+              Bind Documents
             </button>
           </div>
         )}
@@ -431,7 +421,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
                 onClick={() => splitFileInputRef.current?.click()}
                 className="border-2 border-dashed border-outline-variant hover:border-[#008cff] bg-surface-container-low p-12 text-center cursor-pointer transition-all"
               >
-                <span className="text-xs uppercase font-bold tracking-widest text-on-surface-variant">
+                <span className="text-xs uppercase font-bold tracking-wide text-on-surface-variant">
                   DROP A PDF DOCUMENT HERE OR CLICK TO BROWSE
                 </span>
               </div>
@@ -446,7 +436,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
                   onClick={() => setSplitFile(null)}
                   className="text-red-500 hover:text-red-600 uppercase font-bold tracking-wider text-xs"
                 >
-                  [ CHANGE ]
+                  Change
                 </button>
               </div>
             )}
@@ -455,7 +445,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
               <div className="flex flex-col gap-6">
                 {/* Page range text inputs */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs uppercase font-bold tracking-widest text-on-surface-variant">
+                  <label className="text-xs uppercase font-bold tracking-wide text-on-surface-variant">
                     SPECIFY PAGE RANGES (E.G. "1-3, 5, 7-12")
                   </label>
                   <input
@@ -473,9 +463,9 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
                     <table className="w-full text-left border-collapse text-xs">
                       <thead>
                         <tr className="bg-surface-container-low border-b border-outline-variant">
-                          <th className="p-3 uppercase font-bold tracking-widest border-r border-outline-variant">PART</th>
-                          <th className="p-3 uppercase font-bold tracking-widest border-r border-outline-variant">PAGES</th>
-                          <th className="p-3 uppercase font-bold tracking-widest">ACTIONS</th>
+                          <th className="p-3 uppercase font-bold tracking-wide border-r border-outline-variant">PART</th>
+                          <th className="p-3 uppercase font-bold tracking-wide border-r border-outline-variant">PAGES</th>
+                          <th className="p-3 uppercase font-bold tracking-wide">ACTIONS</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -488,7 +478,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
                                 onClick={() => executeSplitDownload(list, idx)}
                                 className="text-[#008cff] hover:text-[#0070cc] uppercase font-bold tracking-wider"
                               >
-                                [ DOWNLOAD PART ]
+                                Download Part
                               </button>
                             </td>
                           </tr>
@@ -500,7 +490,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
 
                 <button
                   onClick={handleSplitAll}
-                  className="w-full py-4 bg-[#008cff] hover:bg-[#0070cc] text-white text-xs font-bold uppercase tracking-widest transition-all"
+                  className="w-full py-4 bg-[#008cff] hover:bg-[#0070cc] text-white text-xs font-bold uppercase tracking-wide transition-all"
                 >
                   [ SPLIT & DOWNLOAD ALL PARTS ]
                 </button>
@@ -525,7 +515,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
                 onClick={() => protectFileInputRef.current?.click()}
                 className="border-2 border-dashed border-outline-variant hover:border-[#008cff] bg-surface-container-low p-12 text-center cursor-pointer transition-all"
               >
-                <span className="text-xs uppercase font-bold tracking-widest text-on-surface-variant">
+                <span className="text-xs uppercase font-bold tracking-wide text-on-surface-variant">
                   DROP A PDF DOCUMENT HERE OR CLICK TO BROWSE
                 </span>
               </div>
@@ -539,7 +529,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
                   onClick={() => setProtectFile(null)}
                   className="text-red-500 hover:text-red-600 uppercase font-bold tracking-wider text-xs"
                 >
-                  [ CHANGE ]
+                  Change
                 </button>
               </div>
             )}
@@ -548,7 +538,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
               <div className="flex flex-col gap-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
-                    <label className="text-xs uppercase font-bold tracking-widest text-on-surface-variant">
+                    <label className="text-xs uppercase font-bold tracking-wide text-on-surface-variant">
                       USER PASSWORD (REQUIRED TO OPEN)
                     </label>
                     <input
@@ -560,7 +550,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-xs uppercase font-bold tracking-widest text-on-surface-variant">
+                    <label className="text-xs uppercase font-bold tracking-wide text-on-surface-variant">
                       OWNER PASSWORD (RESTRICT PRINT/COPY)
                     </label>
                     <input
@@ -575,9 +565,9 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
 
                 <button
                   onClick={handleProtectSubmit}
-                  className="w-full py-4 bg-[#008cff] hover:bg-[#0070cc] text-white text-xs font-bold uppercase tracking-widest transition-all"
+                  className="w-full py-4 bg-[#008cff] hover:bg-[#0070cc] text-white text-xs font-bold uppercase tracking-wide transition-all"
                 >
-                  [ ENCRYPT DOCUMENT ]
+                  Encrypt Document
                 </button>
               </div>
             )}
@@ -600,7 +590,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
                 onClick={() => unlockFileInputRef.current?.click()}
                 className="border-2 border-dashed border-outline-variant hover:border-[#008cff] bg-surface-container-low p-12 text-center cursor-pointer transition-all"
               >
-                <span className="text-xs uppercase font-bold tracking-widest text-on-surface-variant">
+                <span className="text-xs uppercase font-bold tracking-wide text-on-surface-variant">
                   DROP A RESTRICTED PDF HERE OR CLICK TO BROWSE
                 </span>
               </div>
@@ -614,7 +604,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
                   onClick={() => setUnlockFile(null)}
                   className="text-red-500 hover:text-red-600 uppercase font-bold tracking-wider text-xs"
                 >
-                  [ CHANGE ]
+                  Change
                 </button>
               </div>
             )}
@@ -622,7 +612,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
             {unlockFile && (
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs uppercase font-bold tracking-widest text-on-surface-variant">
+                  <label className="text-xs uppercase font-bold tracking-wide text-on-surface-variant">
                     DECRYPTION PASSWORD (REQUIRED FOR OPEN LOCKS)
                   </label>
                   <input
@@ -636,7 +626,7 @@ export default function PDFStudioTool({ onBack }: PDFStudioToolProps) {
 
                 <button
                   onClick={handleUnlockSubmit}
-                  className="w-full py-4 bg-[#008cff] hover:bg-[#0070cc] text-white text-xs font-bold uppercase tracking-widest transition-all"
+                  className="w-full py-4 bg-[#008cff] hover:bg-[#0070cc] text-white text-xs font-bold uppercase tracking-wide transition-all"
                 >
                   [ DECRYPT & DOWNLOAD ]
                 </button>

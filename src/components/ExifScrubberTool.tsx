@@ -1,3 +1,4 @@
+import { ArrowLeft, Shield } from 'lucide-react';
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import piexif from 'piexifjs';
@@ -146,15 +147,15 @@ export default function ExifScrubberTool({ onBack }: { onBack?: () => void }) {
       {/* Header - Text Only Brutalism */}
       <div className="mb-12 border-b-2 border-outline-variant pb-6 flex justify-between items-end">
         <div>
-          <h1 className="text-4xl font-black uppercase tracking-tighter mb-2">PHOTO EXIF & GPS SCRUBBER</h1>
-          <p className="text-sm uppercase tracking-widest text-on-surface-variant">PERMANENTLY DELETE HIDDEN METADATA. 100% LOCAL EXECUTION.</p>
+          <h1 className="text-4xl font-bold uppercase tracking-tighter mb-2">PHOTO EXIF & GPS SCRUBBER</h1>
+          <p className="text-sm uppercase tracking-wide text-on-surface-variant">PERMANENTLY DELETE HIDDEN METADATA. 100% LOCAL EXECUTION.</p>
         </div>
         {onBack && (
           <button 
             onClick={onBack}
-            className="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors"
+            className="text-xs font-bold uppercase tracking-wide text-on-surface-variant hover:text-on-surface transition-colors"
           >
-            [ RETURN TO DIRECTORY ]
+            Return To Directory
           </button>
         )}
       </div>
@@ -169,7 +170,7 @@ export default function ExifScrubberTool({ onBack }: { onBack?: () => void }) {
         }`}
       >
         <input {...getInputProps()} />
-        <p className={`text-2xl font-black uppercase tracking-widest text-center ${isDragActive ? 'text-[#008cff]' : 'text-on-surface-variant'}`}>
+        <p className={`text-2xl font-bold uppercase tracking-wide text-center ${isDragActive ? 'text-[#008cff]' : 'text-on-surface-variant'}`}>
           {isDragActive ? 'RELEASE TO PROCESS' : 'DROP JPEG IMAGES HERE TO SCRUB DATA'}
         </p>
       </div>
@@ -178,19 +179,19 @@ export default function ExifScrubberTool({ onBack }: { onBack?: () => void }) {
       {images.length > 0 && (
         <div className="w-full flex flex-col border-2 border-outline-variant">
           <div className="w-full bg-surface-container flex items-center justify-between p-4 border-b-2 border-outline-variant">
-            <h2 className="text-lg font-black uppercase tracking-widest">PROCESS QUEUE ({images.length})</h2>
+            <h2 className="text-lg font-bold uppercase tracking-wide">PROCESS QUEUE ({images.length})</h2>
             <div className="flex gap-4">
               <button 
                 onClick={removeAll}
-                className="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-red-500 transition-colors"
+                className="text-xs font-bold uppercase tracking-wide text-on-surface-variant hover:text-red-500 transition-colors"
               >
-                [ CLEAR ALL ]
+                Clear All
               </button>
               {images.some(img => img.status === 'SUCCESS') && (
                 <button 
                   onClick={downloadAllZip}
                   disabled={isProcessingZip}
-                  className="text-xs font-black uppercase tracking-widest text-[#008cff] hover:text-white hover:bg-[#008cff] px-3 py-1 transition-colors"
+                  className="text-xs font-bold uppercase tracking-wide text-[#008cff] hover:text-white hover:bg-[#008cff] px-3 py-1 transition-colors"
                 >
                   {isProcessingZip ? 'ZIPPING...' : '[ DOWNLOAD ALL (ZIP) ]'}
                 </button>
@@ -201,7 +202,7 @@ export default function ExifScrubberTool({ onBack }: { onBack?: () => void }) {
           <div className="w-full overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b-2 border-outline-variant bg-surface-container-lowest text-xs font-black uppercase tracking-widest">
+                <tr className="border-b-2 border-outline-variant bg-surface-container-lowest text-xs font-bold uppercase tracking-wide">
                   <th className="p-4 border-r-2 border-outline-variant w-1/2">FILENAME</th>
                   <th className="p-4 border-r-2 border-outline-variant">ORIGINAL SIZE</th>
                   <th className="p-4 border-r-2 border-outline-variant">SCRUBBED SIZE</th>
@@ -225,16 +226,16 @@ export default function ExifScrubberTool({ onBack }: { onBack?: () => void }) {
                         <a 
                           href={img.blobUrl}
                           download={`scrubbed_${img.name}`}
-                          className="text-xs font-black uppercase tracking-widest text-[#008cff] hover:underline"
+                          className="text-xs font-bold uppercase tracking-wide text-[#008cff] hover:underline"
                         >
                           DOWNLOAD SCRUBBED
                         </a>
                       ) : img.status === 'PROCESSING' ? (
-                        <span className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">PROCESSING...</span>
+                        <span className="text-xs font-bold uppercase tracking-wide text-on-surface-variant">PROCESSING...</span>
                       ) : img.status === 'UNSUPPORTED' ? (
-                        <span className="text-xs font-bold uppercase tracking-widest text-red-500">ONLY JPEG SUPPORTED</span>
+                        <span className="text-xs font-bold uppercase tracking-wide text-red-500">ONLY JPEG SUPPORTED</span>
                       ) : (
-                        <span className="text-xs font-bold uppercase tracking-widest text-red-500">ERROR</span>
+                        <span className="text-xs font-bold uppercase tracking-wide text-red-500">ERROR</span>
                       )}
                     </td>
                   </tr>

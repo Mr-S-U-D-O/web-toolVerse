@@ -1,3 +1,4 @@
+import { ArrowLeft, Shield } from 'lucide-react';
 import React, { useState } from 'react';
 
 interface WhatsappLinkGeneratorToolProps {
@@ -34,41 +35,45 @@ export default function WhatsappLinkGeneratorTool({ onBack }: WhatsappLinkGenera
   };
 
   return (
-    <div className="min-h-screen bg-background text-on-surface w-full flex flex-col font-mono selection:bg-[#008cff] selection:text-white">
-      
-      {/* Brutalist Sticky Header */}
+    <div className="min-h-screen bg-background text-on-surface w-full pb-20 animate-in fade-in duration-300">
+      {/* Header */}
       <header className="sticky top-0 z-30 w-full border-b border-outline-variant bg-background/95 backdrop-blur-sm">
-        <div className="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-[1280px] mx-auto px-6 h-14 flex items-center justify-between">
           <button
             onClick={onBack}
-            className="text-on-surface-variant hover:text-[#008cff] transition-colors uppercase tracking-widest font-bold text-xs"
+            className="group flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
           >
-            [ BACK TO CABINET ]
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+            <span className="font-mono text-[11px] uppercase tracking-widest">Tool Cabinet</span>
           </button>
-          <span className="font-bold uppercase tracking-wider text-sm">
-            WHATSAPP CHAT LINK GENERATOR
-          </span>
+
+          <div className="flex items-center gap-4">
+            <div className="font-sans text-sm font-medium text-on-surface">WhatsApp Chat Link Generator</div>
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#008cff]/10 border border-[#008cff]/20 text-[10px] font-mono uppercase tracking-wider text-[#008cff]">
+              <Shield className="w-3 h-3" />
+              100% Client-Side
+            </div>
+          </div>
+          <div className="w-[120px]" />
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <main className="flex-grow max-w-[800px] mx-auto w-full px-6 py-12 flex flex-col gap-10">
-        
-        {/* Title Block */}
-        <div className="border-b border-outline-variant pb-6">
-          <h1 className="text-3xl font-black uppercase tracking-tight text-on-surface mb-2">
-            WHATSAPP CHAT LINK GENERATOR
-          </h1>
-          <p className="text-on-surface-variant text-sm font-sans tracking-wide">
-            Create instant WhatsApp conversation starters for your business. No trackers, no databases, runs 100% locally.
-          </p>
+      <main className="max-w-[1280px] mx-auto px-6 py-10 w-full">
+        {/* Title */}
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 className="font-heading text-3xl font-bold tracking-tight text-[#008cff]">WhatsApp Chat Link Generator</h1>
+            <p className="text-on-surface-variant mt-2 text-sm font-sans max-w-2xl">
+              Generate custom click-to-chat WhatsApp links with pre-filled text lines to capture sales leads instantly.
+            </p>
+          </div>
         </div>
 
         {/* Form Fields - Grid Layout */}
         <div className="flex flex-col gap-6">
           {/* Phone Field */}
           <div className="flex flex-col gap-2">
-            <label className="text-xs uppercase font-bold tracking-widest text-on-surface-variant">
+            <label className="text-xs uppercase font-bold tracking-wide text-on-surface-variant">
               PHONE NUMBER (WITH COUNTRY CODE, NO "+" OR SPACES)
             </label>
             <input
@@ -82,7 +87,7 @@ export default function WhatsappLinkGeneratorTool({ onBack }: WhatsappLinkGenera
 
           {/* Text Message Field */}
           <div className="flex flex-col gap-2">
-            <label className="text-xs uppercase font-bold tracking-widest text-on-surface-variant">
+            <label className="text-xs uppercase font-bold tracking-wide text-on-surface-variant">
               PRE-FILLED CONVERSATION TEXT
             </label>
             <textarea
@@ -97,7 +102,7 @@ export default function WhatsappLinkGeneratorTool({ onBack }: WhatsappLinkGenera
 
         {/* Live Output Canvas */}
         <div className="border border-outline-variant bg-surface-container-lowest p-6 flex flex-col gap-4">
-          <div className="text-xs uppercase font-bold tracking-widest text-on-surface-variant border-b border-outline-variant pb-2">
+          <div className="text-xs uppercase font-bold tracking-wide text-on-surface-variant border-b border-outline-variant pb-2">
             LIVE LINK PREVIEW
           </div>
           
@@ -118,14 +123,14 @@ export default function WhatsappLinkGeneratorTool({ onBack }: WhatsappLinkGenera
               disabled={!generatedLink}
               className="w-full py-3.5 border border-outline-variant bg-surface-container-low hover:bg-surface-container hover:border-[#008cff] disabled:opacity-40 disabled:hover:border-outline-variant disabled:hover:bg-surface-container-low text-xs font-bold uppercase tracking-wider transition-all"
             >
-              {copySuccess ? '[ LINK COPIED ]' : '[ COPY GENERATED LINK ]'}
+              {copySuccess ? 'Link Copied' : 'Copy Generated Link'}
             </button>
             <button
               onClick={handleTest}
               disabled={!generatedLink}
               className="w-full py-3.5 bg-[#008cff] text-white hover:bg-[#0070cc] disabled:opacity-40 disabled:hover:bg-[#008cff] text-xs font-bold uppercase tracking-wider transition-all"
             >
-              [ TEST DIRECT COMMUNICATION LINK ]
+              Test Direct Communication Link
             </button>
           </div>
         </div>

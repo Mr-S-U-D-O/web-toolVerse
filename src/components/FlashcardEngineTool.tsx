@@ -302,7 +302,7 @@ export default function FlashcardEngineTool({ onBack }: { onBack?: () => void })
                     className="absolute inset-0 bg-surface-container-low border border-outline-variant rounded-3xl shadow-md flex items-center justify-center p-8 sm:p-12"
                     style={{ backfaceVisibility: 'hidden' }}
                   >
-                    <div className="absolute top-4 left-4 text-xs font-bold text-on-surface-variant/50 uppercase tracking-widest">Front</div>
+                    <div className="absolute top-4 left-4 text-xs font-bold text-on-surface-variant/50 uppercase tracking-wide">Front</div>
                     <p className="text-2xl sm:text-3xl font-bold text-on-surface text-center leading-tight">
                       {activeCard.front}
                     </p>
@@ -316,7 +316,7 @@ export default function FlashcardEngineTool({ onBack }: { onBack?: () => void })
                     className="absolute inset-0 bg-surface border border-[#008cff]/20 rounded-3xl shadow-xl flex items-center justify-center p-8 sm:p-12"
                     style={{ backfaceVisibility: 'hidden', transform: 'rotateX(180deg)' }}
                   >
-                    <div className="absolute top-4 left-4 text-xs font-bold text-[#008cff]/50 uppercase tracking-widest">Back</div>
+                    <div className="absolute top-4 left-4 text-xs font-bold text-[#008cff]/50 uppercase tracking-wide">Back</div>
                     <p className="text-xl sm:text-2xl text-on-surface text-center leading-relaxed">
                       {activeCard.back}
                     </p>
